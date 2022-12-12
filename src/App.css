@@ -1,38 +1,64 @@
+#root {
+    background-color: #191D2F;
+    background-image: url("data:image/svg+xml,%3Csvg width='1920' height='988' viewBox='0 0 1920 988' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg filter='url(%23filter0_i_6_171)'%3E%3Cpath d='M-10 0L73.7667 18.4212C157.533 38.2326 325.067 72.9896 492.6 240.866C660.133 406.656 827.667 705.566 995.2 722.944C1162.73 740.323 1330.27 483.122 1497.8 352.088C1665.33 222.444 1832.87 222.444 2000.4 333.667C2167.93 444.889 2335.47 667.333 2419.23 778.556L2503 889.778V1001H2419.23C2335.47 1001 2167.93 1001 2000.4 1001C1832.87 1001 1665.33 1001 1497.8 1001C1330.27 1001 1162.73 1001 995.2 1001C827.667 1001 660.133 1001 492.6 1001C325.067 1001 157.533 1001 73.7667 1001H-10V0Z' fill='%23800F93' fill-opacity='0.86'/%3E%3C/g%3E%3Cdefs%3E%3Cfilter id='filter0_i_6_171' x='-10' y='0' width='2535' height='1080' filterUnits='userSpaceOnUse' color-interpolation-filters='sRGB'%3E%3CfeFlood flood-opacity='0' result='BackgroundImageFix'/%3E%3CfeBlend mode='normal' in='SourceGraphic' in2='BackgroundImageFix' result='shape'/%3E%3CfeColorMatrix in='SourceAlpha' type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0' result='hardAlpha'/%3E%3CfeOffset dx='22' dy='97'/%3E%3CfeGaussianBlur stdDeviation='39.5'/%3E%3CfeComposite in2='hardAlpha' operator='arithmetic' k2='-1' k3='1'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.8375 0 0 0 0 0.0718855 0 0 0 0 0.531255 0 0 0 0.22 0'/%3E%3CfeBlend mode='normal' in2='shape' result='effect1_innerShadow_6_171'/%3E%3C/filter%3E%3C/defs%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
 .App {
-  text-align: center;
+    background-color: #191D2F;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.Auth-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.Auth-form {
+    border-radius: 20px;
+    width: 420px;
+    box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    border-radius: 8px;
+    background-color: #2E053D;
+    box-shadow: 0px -1px 39px rgba(0, 0, 0, 0.25);
+
+    backdrop-filter: blur(10px);
+    /* Note: backdrop-filter has minimal browser support */
+
+    border-radius: 20px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.Auth-form-content {
+    padding-left: 12%;
+    padding-right: 12%;
 }
 
-.App-link {
-  color: #61dafb;
+.Auth-form input{
+background-color: #2E053D;
+color: aliceblue;
+border: none;
+border-bottom: 2px solid white;
+border-radius: 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Auth-form-title {
+    text-align: center;
+    margin-bottom: 1em;
+    font-size: 24px;
+    color: rgb(241, 241, 241);
+    font-weight: 800;
+}
+
+.Auth-form .text-center{
+    color: rgba(255, 255, 255, 0.43);
+}
+
+Auth-form .text-center span {
+    color: rgb(255, 255, 255);
 }
