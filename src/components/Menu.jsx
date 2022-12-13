@@ -17,9 +17,9 @@ function Menu() {
                     <div className="Menu-buttons">
                     <Link to='/auth'>Find a lobby</Link>
                     <Link to='/auth'>Create a lobby</Link>
-                    <Link to='/menu/profile'>My profile</Link>
-                    <Link to='/menu/about'>About game</Link>
-                    <Link to='/menu/settings'>Settings</Link>
+                    <Link to='/profile'>My profile</Link>
+                    <Link to='/about'>About game</Link>
+                    <Link to='/settings'>Settings</Link>
                     </div>
                 </div >
             </div>
