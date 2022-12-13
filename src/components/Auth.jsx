@@ -25,7 +25,7 @@ export default function () {
       setauthenticated(true)
       localStorage.setItem("authenticated", true);
       console.log('authenticated');
-      navigate("/menu");
+      navigate("/");
     }
   };
 

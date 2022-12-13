@@ -4,7 +4,6 @@ import Auth from "./Auth";
 
 function Menu() {
 
-    const [authenticated, setauthenticated] = useState(null);
 
     if (!localStorage.getItem("authenticated")) {
         console.log("not authenticated");
