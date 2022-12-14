@@ -2,6 +2,8 @@ import React from "react";
 
 import {useNavigate} from "react-router-dom";
 
+import ReturnButton from "../ui_components/ReturnButton";
+
 function ProfileMenu()
 {
 
@@ -38,28 +40,44 @@ function ProfileMenu()
 
 
     return(
+
         <div className="Menu-container">
-            <div className="ProfileMenuBox">
-                <button onClick={returnToMainMenu} className="RoundReturnButton">
-                <svg width="9" height="15" viewBox="0 0 9 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M8.57141 2.14285L3.21427 7.5L8.57141 12.8571L7.49998 15L-1.82561e-05 7.5L7.49998 -3.57628e-06L8.57141 2.14285Z" fill="white"/>
-</svg>
+            <div className="Fancy-submenu">
 
-                </button>
+                <div className="Submenu-header">
+                    <ReturnButton onClick={returnToMainMenu}></ReturnButton>
+                    <h1>My Profile</h1>
+                </div>
 
-                <h1>My Profile</h1>
-                <div>{userData.username}</div>
-                <div>{userData.profileImage}</div>
-                <div>WINS: {userData.gamesWon}</div>
-                <div>ALL: {userData.gamesTotal}</div>
-                <div>WIN RATIO: {calculateWinRation(userData.gamesWon,userData.gamesTotal)} %</div>
-                <div>AVERAGE REACTION: {calculateAvgReactionTime(userData.reactionTimeTotal,userData.questionsAnswered)} sec</div>
-                <div>FIRST GAME: {userData.gameFirst}</div>
-                <div>LAST GAME: {userData.gameLast}</div>
+                <div className="Profile-content">
+                        <div className="Profile-info">
+                            
+                            <h2>Player Name</h2>
+                        </div>
+                        <div className="Profile-stats">
+                            <h2>Statistics</h2>
+                            <div className="Stats-grid">
+                                <div className="Stat-label">Games played total</div>
+                                <div className="Stat-value">9999</div>
+
+                                <div className="Stat-label">Percentage of wins</div>
+                                <div className="Stat-value">99 %</div>
+
+                                <div className="Stat-label">Average reaction time</div>
+                                <div className="Stat-value">9999 ms</div>
+
+                                <div className="Stat-label">First game played</div>
+                                <div className="Stat-value">99-99-9999</div>
+
+                                <div className="Stat-label">Last game played</div>
+                                <div className="Stat-value">99-99-9999</div>
+                            </div>
+                        </div>
+                    </div>
+
+
             </div>
         </div>
-
-        
     );
 
     function returnToMainMenu()

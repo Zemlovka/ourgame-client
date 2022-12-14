@@ -1,57 +1,166 @@
-.AboutMenuBox, .ProfileMenuBox , .SettingsMenuBox
+.Fancy-submenu
 {
-    border-radius: 20px;
-    width: 420px;
-    box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
-
+    min-width: 600px;
+    height: auto;
+    
+    margin: 0px;
     padding: 30px 15px 20px 15px;
 
     border-radius: 8px;
-    background-color: #2E053D;
-    box-shadow: 0px -1px 39px rgba(0, 0, 0, 0.25);
-    color: white;
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
 
+    background-color: #2E053D;
+
+    backdrop-filter: blur(10px);
+    box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
+
+    color: white;
     text-align: center;
 }
 
-.RoundReturnButton
+.Submenu-header
 {
-    position: relative;
-    margin: -16px;
-    
-    top: 20px;
-    left: -160px;
+    display: grid;
+    grid-template-columns: 48px auto 48px;
+    justify-content: center;
+    align-items: center;
+    gap: 96px;
+}
+.Submenu-header > h1
+{
+    margin: 0px;
+    padding: 0px;
+}
 
-    width: 32px;
-    height: 32px;
+.Return-button
+{
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     border-radius: 50%;
-
-    color: white;
+    background-color: darkmagenta;
 }
-
-.ContainerSettings
+.Return-button:hover
 {
-    display: flex;
-    flex-direction: row;
+    background-color: dodgerblue;
+}
+.Return-button:active
+{
+    background-color: crimson;
 }
 
-.ContainerSettingsOptions
+/* ABOUT MENU */
+.About-content
+{   
+    margin-top: 24px;
+
+    display: grid;
+    grid-template-columns: 256px 256px ;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+}
+.Desc-role-player,.Desc-role-host
 {
     display: flex;
     flex-direction: column;
-    
-    
-    gap: 24px;
+    justify-content: flex-start;
+    align-items: center;
+}
+.Desc-role-player
+{   
+    padding-right: 48px;
+    border-right: 2px solid dodgerblue;
+}
+.Desc-role-host
+{
+    padding-left: 48px;
+    border-left: 2px solid dodgerblue;
 }
 
-.ContainerSettingsOptions > button
+/* PROFILE MENU */
+.Profile-content
+{
+    margin-top: 24px;
+
+    display: grid;
+    grid-template-columns: auto auto ;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+}
+.Profile-info, .Profile-stats
+{
+    display: flex;
+    flex-direction: column;
+    justify-content:  flex-start;
+    align-items: center;
+}
+.Profile-info
+{   
+    padding-right: 48px;
+    border-right: 2px solid dodgerblue;
+}
+
+.Profile-stats
+{   
+    padding-left: 0px;
+    border-left: 2px solid dodgerblue;
+}
+.Profile-stats > h2
+{  
+    padding-left: 48px;
+}
+.Stats-grid
+{
+    margin-left: 24px;
+
+    display: grid;
+    grid-template-columns: auto auto ;
+    grid-template-rows: auto auto ;
+    gap: 8px 48px;
+
+}
+.Stat-label, .Stat-value
+{
+    display: block;
+    text-align: left;
+}
+
+
+/* SETTINGS MENU */
+.Settings-content
+{
+    margin-top: 24px;
+
+    display: grid;
+    grid-template-columns: auto 480px ;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+}
+.Settings-options
+{
+    
+    display: flex;
+    flex-direction: column;
+    justify-content:  flex-start;
+    align-items: center;
+    gap: 8px;
+
+    padding-right: 8px;
+
+    border-right: 4px solid dodgerblue;
+
+}
+.Settings-options > button
 {
     margin: 0px;
 }
-.ContainerSettingsContent
+.Settings-selected-option
 {
-    width: 256px;
+    display: block;
 }
