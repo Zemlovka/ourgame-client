@@ -5,6 +5,21 @@
     background-size: cover;
 }
 
+* {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+button {
+width: 150px;
+margin: 0 auto;
+margin-top: 75px;
+background-color: #6832E3;
+border: none;
+}
+
 .App {
     background-color: #191D2F;
 }
@@ -19,7 +34,8 @@
 
 .Auth-form {
     border-radius: 20px;
-    width: 420px;
+    width: 320px;
+    height: 400px;
     box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
     padding-top: 30px;
     padding-bottom: 20px;
@@ -36,14 +52,15 @@
 .Auth-form-content {
     padding-left: 12%;
     padding-right: 12%;
+
 }
 
-.Auth-form input{
-background-color: #2E053D;
-color: aliceblue;
-border: none;
-border-bottom: 2px solid white;
-border-radius: 0;
+.Auth-form input {
+    background-color: #2E053D;
+    color: aliceblue;
+    border: none;
+    border-bottom: 2px solid white;
+    border-radius: 0;
 }
 
 .Auth-form-title {
@@ -54,10 +71,70 @@ border-radius: 0;
     font-weight: 800;
 }
 
-.Auth-form .text-center{
+.Auth-form-content button {
+    width: 150px;
+    margin: 0 auto;
+    margin-top: 75px;
+    background-color: #6832E3;
+    border: none;
+}
+
+.Auth-form-content button:hover {
+    background-color: #581be6;
+}
+
+
+.Auth-form .text-center {
     color: rgba(255, 255, 255, 0.43);
 }
 
-Auth-form .text-center span {
+.Auth-form .text-center span {
     color: rgb(255, 255, 255);
+
+}
+
+/* 
+
+Menu
+
+*/
+
+.Menu-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.Menu {
+    border-radius: 20px;
+    width: 420px;
+    box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    border-radius: 8px;
+    background-color: #2E053D;
+    box-shadow: 0px -1px 39px rgba(0, 0, 0, 0.25);
+    color: white;
+    backdrop-filter: blur(10px);
+    /* Note: backdrop-filter has minimal browser support */
+    border-radius: 20px;
+
+    text-align: center;
+}
+
+.Menu-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.Menu-buttons a {
+    color: white;
+    background-color: #6832E3;
+    padding: 10px;
+    border-radius: 20px;
+    margin: 10px auto;
+    width: 200px;
 }

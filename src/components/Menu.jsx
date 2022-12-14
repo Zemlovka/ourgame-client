@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { Navigate } from "react-router-dom";
+import React, { useEffect, useState} from "react";
+import { Navigate, Link } from "react-router-dom";
+
 import Auth from "./Auth";
 
 function Menu() {
@@ -10,9 +11,19 @@ function Menu() {
         return <Navigate replace to="/auth" />;
     } else {
         return (
-            <div>
-                <p>Welcome to your Menu</p>
+            <div className="Menu-container">
+                <div className="Menu">
+                    <h2>Menu</h2>
+                    <div className="Menu-buttons">
+                    <Link to='/auth'>Find a lobby</Link>
+                    <Link to='/auth'>Create a lobby</Link>
+                    <Link to='/profile'>My profile</Link>
+                    <Link to='/about'>About game</Link>
+                    <Link to='/settings'>Settings</Link>
+                    </div>
+                </div >
             </div>
+            
         );
     }
 };
