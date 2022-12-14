@@ -19,13 +19,13 @@ function SettingsMenu()
 
     return(
         <div className="Menu-container">
-            <div className="Fancy-submenu">
+            <div className="Fancy-submenu" id="SettingsMenu">
                 <div className="Submenu-header">
                     <ReturnButton onClick={returnToMainMenu}></ReturnButton>
                     <h1>Settings</h1>
                 </div>
 
-                <div className="Settings-content">
+                <div className="Submenu-content">
                     <div className="Settings-options">
                         <button onClick={() => changeSettingsContentTo("GAME")}>Game</button>
                         <button onClick={() => changeSettingsContentTo("GRAPHICS")}>Graphics</button>

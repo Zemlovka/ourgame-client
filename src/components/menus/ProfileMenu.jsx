@@ -42,14 +42,14 @@ function ProfileMenu()
     return(
 
         <div className="Menu-container">
-            <div className="Fancy-submenu">
+            <div className="Fancy-submenu" id="ProfileMenu">
 
                 <div className="Submenu-header">
                     <ReturnButton onClick={returnToMainMenu}></ReturnButton>
                     <h1>My Profile</h1>
                 </div>
 
-                <div className="Profile-content">
+                <div className="Submenu-content">
                         <div className="Profile-info">
                             
                             <h2>Player Name</h2>

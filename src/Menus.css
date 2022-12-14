@@ -1,38 +1,46 @@
-.Fancy-submenu
-{
-    min-width: 600px;
-    height: auto;
-    
-    margin: 0px;
-    padding: 30px 15px 20px 15px;
+.Fancy-submenu {
+    width: 80%;
+    height: 80%;
 
-    border-radius: 8px;
-
-    background-color: #2E053D;
-
-    backdrop-filter: blur(10px);
-    box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
+    padding: 20px 15px 200px 20px;
 
     color: white;
     text-align: center;
+
+    background: rgba(46, 5, 61, 0.9);
+    box-shadow: 0px -1px 39px 32px rgba(0, 0, 0, 0.25);
+
+    backdrop-filter: blur(10px);
+    /* Note: backdrop-filter has minimal browser support */
+
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+
 }
 
-.Submenu-header
-{
-    display: grid;
-    grid-template-columns: 48px auto 48px;
+.Submenu-header {
+    width: 100%;
+    display: flex;
+
+    justify-content: space-between;
+
+}
+
+.Submenu-header>h1 {
+    margin: 0 auto;
+    position: relative;
+
+}
+
+.Submenu-content {
+    margin-top: 20px;
+    display: flex;
     justify-content: center;
-    align-items: center;
-    gap: 96px;
-}
-.Submenu-header > h1
-{
-    margin: 0px;
-    padding: 0px;
+    height: 100%;
 }
 
-.Return-button
-{
+.Return-button {
     width: 48px;
     height: 48px;
 
@@ -43,124 +51,128 @@
     border-radius: 50%;
     background-color: darkmagenta;
 }
-.Return-button:hover
-{
+
+.Return-button:hover {
     background-color: dodgerblue;
 }
-.Return-button:active
-{
+
+.Return-button:active {
     background-color: crimson;
 }
 
 /* ABOUT MENU */
-.About-content
-{   
-    margin-top: 24px;
+#AboutMenu .Submenu-header>h1 {
+    margin: 0 auto;
+    position: relative;
+    right: 28px;
 
-    display: grid;
-    grid-template-columns: 256px 256px ;
-    flex-direction: row;
-    justify-content: center;
-    align-items: stretch;
 }
-.Desc-role-player,.Desc-role-host
-{
+
+.Desc-role-player, .Desc-role-host {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
 }
-.Desc-role-player
-{   
-    padding-right: 48px;
-    border-right: 2px solid dodgerblue;
+
+.Desc-role-player {
+    width: 50%;
+    border-right: 1px solid rgb(255, 255, 255);
 }
-.Desc-role-host
-{
-    padding-left: 48px;
-    border-left: 2px solid dodgerblue;
+
+.Desc-role-host {
+    width: 50%;
+    border-left: 1px solid rgb(255, 255, 255);
 }
 
 /* PROFILE MENU */
-.Profile-content
-{
+.Profile-content {
     margin-top: 24px;
 
     display: grid;
-    grid-template-columns: auto auto ;
+    grid-template-columns: auto auto;
     flex-direction: row;
     justify-content: center;
     align-items: stretch;
 }
-.Profile-info, .Profile-stats
-{
-    display: flex;
-    flex-direction: column;
-    justify-content:  flex-start;
-    align-items: center;
-}
-.Profile-info
-{   
-    padding-right: 48px;
-    border-right: 2px solid dodgerblue;
+#ProfileMenu .Submenu-header>h1 {
+    margin: 0 auto;
+    position: relative;
+    right: 28px;
+
 }
 
-.Profile-stats
-{   
-    padding-left: 0px;
-    border-left: 2px solid dodgerblue;
+.Profile-info, .Profile-stats {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
 }
-.Profile-stats > h2
-{  
+
+.Profile-info {
+    width: 50%;
+
+    border-right: 1px solid rgb(255, 255, 255);
+}
+
+.Profile-stats {
+    width: 50%;
+    padding-left: 0px;
+    border-left: 1px solid rgb(255, 255, 255);
+}
+
+.Profile-stats>h2 {
     padding-left: 48px;
 }
-.Stats-grid
-{
+
+.Stats-grid {
     margin-left: 24px;
 
     display: grid;
-    grid-template-columns: auto auto ;
-    grid-template-rows: auto auto ;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
     gap: 8px 48px;
 
 }
-.Stat-label, .Stat-value
-{
+
+.Stat-label, .Stat-value {
     display: block;
     text-align: left;
 }
 
 
 /* SETTINGS MENU */
-.Settings-content
-{
-    margin-top: 24px;
+/* НУЖНО ПЕРЕРАБОТАТЬ ИМХО, ПРИЧЕМ ВДВОЕМ, ПОТОМУ ЧТО ЭТО ОКНО МАКСИМАЛЬНО НЕРЕСПОНИСВНОЕ.
+    Нужно сделать линию во весь блок, и сделать наверное скролл.
 
-    display: grid;
-    grid-template-columns: auto 480px ;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: stretch;
-}
-.Settings-options
-{
-    
-    display: flex;
-    flex-direction: column;
-    justify-content:  flex-start;
-    align-items: center;
-    gap: 8px;
+*/
 
-    padding-right: 8px;
+.Settings-options {
+width: calc(100%/3);
+display: flex;
+flex-direction: column;
+justify-content: space-around;
+border-right: 1px solid white;
 
-    border-right: 4px solid dodgerblue;
 
 }
-.Settings-options > button
-{
-    margin: 0px;
+.Settings-selected-option {
+width:60%;
 }
-.Settings-selected-option
-{
-    display: block;
+
+.Settings-options>button {
+color: white;
+font-size: 2rem;
+border-radius: 20px;
+background-color: transparent;
+border: none;
+font-size: 3vw;
+}
+
+/* Не должно быть :hover, должно быть так: на клик к кнопке добавляется класс active, и в нем уже прописать back color */
+.Settings-options>button:hover {
+background-color: #6832E3;
+}
+
+.Settings-selected-option div{
 }

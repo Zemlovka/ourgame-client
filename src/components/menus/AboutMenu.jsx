@@ -10,7 +10,7 @@ function AboutMenu()
 
     return(
         <div className="Menu-container">
-            <div className="Fancy-submenu">
+            <div className="Fancy-submenu" id="AboutMenu">
                 {/* TODO: This entire header part can be change with Component! */}
                 {/* TODO: Остальные комменты допишу потом :( */}
                 <div className="Submenu-header">
@@ -18,7 +18,7 @@ function AboutMenu()
                     <h1>About Game</h1>
                 </div>
 
-                <div className="About-content">
+                <div className="Submenu-content">
                     <div className="Desc-role-player">
                         <h2>Player</h2>
                         <p>TODO: text for player #1</p>
