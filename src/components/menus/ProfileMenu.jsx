@@ -4,6 +4,7 @@ import {useNavigate} from "react-router-dom";
 
 import ReturnButton from "../ui_components/ReturnButton";
 
+
 function ProfileMenu()
 {
 
@@ -24,7 +25,8 @@ function ProfileMenu()
         gameLast: "12-12-2022", // (?) Date or DateTime
         gameFirst: "11-12-2022"
     }
-
+    // (?) Un-used functions
+    /*
     function calculateWinRation(won,all)
     {
         // [!] TODO: Zero Division Exception
@@ -37,12 +39,11 @@ function ProfileMenu()
         return String(Math.floor(time/questions*100)/100);
     }
 
-
+    */
 
     return(
-
-        <div className="Menu-container">
-            <div className="Fancy-submenu" id="ProfileMenu">
+        <div className="Wrapper-submenu">
+            <div className="Submenu-box" id="ProfileMenu">
 
                 <div className="Submenu-header">
                     <ReturnButton onClick={returnToMainMenu}></ReturnButton>
@@ -51,9 +52,10 @@ function ProfileMenu()
 
                 <div className="Submenu-content">
                         <div className="Profile-info">
-                            
+                            <img className="Profile-pic" src={require("../../imgs/img_profile.jpg")}></img>
                             <h2>Player Name</h2>
                         </div>
+
                         <div className="Profile-stats">
                             <h2>Statistics</h2>
                             <div className="Stats-grid">
@@ -73,8 +75,7 @@ function ProfileMenu()
                                 <div className="Stat-value">99-99-9999</div>
                             </div>
                         </div>
-                    </div>
-
+                </div>
 
             </div>
         </div>

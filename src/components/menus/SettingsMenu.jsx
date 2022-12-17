@@ -8,6 +8,7 @@ import OptionAudio from "./settings_options/OptionAudio"
 import OptionGraphics from "./settings_options/OptionGraphics"
 
 import ReturnButton from "../ui_components/ReturnButton";
+import SimpleButton from "../ui_components/SimpleButton";
 
 function SettingsMenu()
 {
@@ -15,11 +16,9 @@ function SettingsMenu()
 
     const navigate = useNavigate(); 
     
-    
-
     return(
-        <div className="Menu-container">
-            <div className="Fancy-submenu" id="SettingsMenu">
+        <div className="Wrapper-submenu">
+            <div className="Submenu-box" id="SettingsMenu">
                 <div className="Submenu-header">
                     <ReturnButton onClick={returnToMainMenu}></ReturnButton>
                     <h1>Settings</h1>
@@ -27,12 +26,12 @@ function SettingsMenu()
 
                 <div className="Submenu-content">
                     <div className="Settings-options">
-                        <button onClick={() => changeSettingsContentTo("GAME")}>Game</button>
-                        <button onClick={() => changeSettingsContentTo("GRAPHICS")}>Graphics</button>
-                        <button onClick={() => changeSettingsContentTo("AUDIO")}>Audio</button>
+                        <SimpleButton text="Game" onClick={() => changeSettingsContentTo("GAME")}/>
+                        <SimpleButton text="Graphics" onClick={() => changeSettingsContentTo("GRAPHICS")}/>
+                        <SimpleButton text="Audio" onClick={() => changeSettingsContentTo("AUDIO")}/>
                     </div>
 
-                    <div className="Settings-selected-option">
+                    <div className="Selected-option">
                         {selectedOption}
                     </div>  
                 </div>
