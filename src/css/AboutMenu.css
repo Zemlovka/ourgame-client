@@ -1,0 +1,14 @@
+#AboutMenu > .Submenu-content
+{
+  padding: 1.5rem;
+  align-items: stretch;
+}
+
+.Desc-role-player, .Desc-role-host {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+}
+

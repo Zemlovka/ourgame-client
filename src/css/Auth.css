@@ -1,0 +1,111 @@
+.Auth-box
+{
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    border-radius: 20px;
+    /* Note: backdrop-filter has minimal browser support */
+    backdrop-filter: blur(10px); 
+    box-shadow: 0px -1px 39px var(--shadow-alpha-50);
+
+    background-color: var(--secondary-color-light);
+}
+
+.Auth-box > .Title {
+    width: 100%;
+    margin-bottom: 0.5rem;
+
+    color: var(--font-color-default);
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 800;
+
+    cursor: default;
+}
+
+.Auth-box > .Label {
+    width: 100%;
+    margin-bottom: 1em;
+    
+    color: var(--font-color-default-alpha-75);
+    text-align: center;
+    font-size: 1em;
+    font-weight: 400;
+
+    cursor: default;
+}
+.Auth-box > .Label > .Link {
+
+    color: var(--font-color-link);
+    text-align: center;
+    font-size: 1em;
+    font-weight: 400;
+
+    cursor: pointer;
+}
+
+.Auth-form 
+{
+    padding-top: 2rem;
+    padding-bottom: 0rem;
+
+    width: 80%;
+    height: 75%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 5%;
+}
+
+.Auth-form > button
+{
+    margin: 2rem auto 0px auto;
+
+    width: 60%;
+    height: 2.5rem;
+
+    border: 0px;
+    border-radius: 10px;
+
+    font-size: 1.125rem;
+    color: var(--font-color-default);
+
+}
+
+
+.Auth-form > input
+{
+    width: 100%;
+    height: 2.5rem;
+
+    padding: 0.25rem 0.5rem;
+
+    border: none;
+    border-bottom: 2px solid var(--font-color-default);
+}
+/* For Chrome, Firefox, Opera, Safari 10.1+ */
+.Auth-form > input::placeholder { 
+    color: var(--font-color-default-alpha-75);
+    opacity: 1; /* Firefox */
+  }
+.Auth-form > .Input-field-default
+{
+    background-color: var(--secondary-color-light);
+    color: var(--font-color-default);
+}
+.Auth-form > .Input-field-focused
+{
+    background-color: var(--font-color-default);
+    color: var(--font-color-default-contrast);
+}
+

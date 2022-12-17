@@ -1,0 +1,36 @@
+.Wrapper-narrow
+{
+    width:  min(80%,320px);
+    height: min(75%,400px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* For testing */
+    border: 0px dashed red;
+}
+.Wrapper-main
+{
+    width: min(80%,320px);
+    height: min(75%,480px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* For testing */
+    border: 0px dashed red;    
+}
+.Wrapper-submenu
+{
+    width: min(80%,720px);
+    height: min(75%,480px);
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* For testing */
+    border: 0px dashed red;    
+}

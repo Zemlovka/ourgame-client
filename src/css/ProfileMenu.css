@@ -1,0 +1,46 @@
+
+#ProfileMenu .Profile-info 
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+#ProfileMenu .Profile-info > .Profile-pic
+{
+    max-width: min(150px,80%);
+    max-height: min(150px,80%);
+
+    margin-bottom: 1rem;
+}
+
+.Stats-grid 
+{
+    padding: 1rem;
+
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+
+    gap: 0.5rem 0.25rem;
+}
+
+.Stat-label, .Stat-value 
+{
+    display: block;
+    text-align: left;
+
+    font-size: 1.125rem;
+}
+.Stat-value 
+{
+    color: var(--font-color-marked);
+}
+
+@media only screen and (max-width: 700px)
+{
+    .Stat-label, .Stat-value 
+    {
+        font-size: 1rem;
+    }
+}
