@@ -1,12 +1,20 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 
 // CSS
-import './App.css'
-import './Menus.css'
+import './css/App.css'
+import './css/Wrappers.css'
+
+import './css/Auth.css'
+import './css/Main.css'
+import './css/Submenu.css'
+import './css/AboutMenu.css'
+import './css/ProfileMenu.css'
+import './css/SettingsMenu.css'
+import './css/Menus.css'
 
 //components
-import Login from './components/Auth'
-import Menu from './components/Menu'
+import Auth from './components/Auth'
+import Main from './components/Main'
 
 // Other Menus
 import AboutMenu from "./components/menus/AboutMenu"
@@ -17,8 +25,8 @@ const App = () => {
     return (
         <BrowserRouter>
         <Routes>
-            <Route path="/auth" element={<Login/>} />
-            <Route path="/" element={<Menu/>} />
+            <Route path="/auth" element={<Auth/>} />
+            <Route path="/" element={<Main/>} />
 
             <Route path="/profile" element={<ProfileMenu/>}/>
             <Route path="/about" element={<AboutMenu/>}/>
