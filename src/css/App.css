@@ -1,0 +1,102 @@
+:root
+{   /* Definition of variables */
+    /* This can be used to create color schemes... */
+
+        /* Colors */
+        /*
+        --our-darkest-blue: #191D2F;
+        --our-dark-violet: #2E053D;
+        --our-bluish-purple-v1: #6832E3;
+        --our-bluish-purple-v2: #581BE6;
+        */
+
+        /* Main Colors */
+    --primary-color: #6832E3;
+    --secondary-color-dark: #191D2F;
+    --secondary-color-light: #2E053D;
+
+        /* Shadows */
+    --shadow-alpha-50: rgba(0, 0, 0, 0.50);
+    --shadow-alpha-25: rgba(0, 0, 0, 0.25);
+
+    /* Button Colors */
+        /* Default Button Colors */
+    --button-color-default: darkmagenta ;
+    --button-color-hovered: dodgerblue;
+    --button-color-pressed: crimson;
+
+    /* Font Colors */  
+        /* Default Font Colors */
+    --font-color-default-values: 255,255,255;  /* White */
+    --font-color-default: rgb(var(--font-color-default-values));
+    --font-color-default-alpha-75: rgba(var(--font-color-default-values),0.75);
+    --font-color-default-alpha-50: rgba(var(--font-color-default-values),0.5);
+    --font-color-default-alpha-25: rgba(var(--font-color-default-values),0.25);
+    --font-color-default-contrast: black;
+         /* Special Font Colors */
+    --font-color-link: dodgerblue;
+    --font-color-marked: dodgerblue;
+
+    font-size: 16px;
+} 
+
+
+* 
+{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+a 
+{
+    text-decoration: none;
+}
+
+html, body, #root
+{
+    height: 100%;
+}
+#root {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    background-color: var(--secondary-color-dark);
+    background-image: url("data:image/svg+xml,%3Csvg width='1920' height='988' viewBox='0 0 1920 988' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg filter='url(%23filter0_i_6_171)'%3E%3Cpath d='M-10 0L73.7667 18.4212C157.533 38.2326 325.067 72.9896 492.6 240.866C660.133 406.656 827.667 705.566 995.2 722.944C1162.73 740.323 1330.27 483.122 1497.8 352.088C1665.33 222.444 1832.87 222.444 2000.4 333.667C2167.93 444.889 2335.47 667.333 2419.23 778.556L2503 889.778V1001H2419.23C2335.47 1001 2167.93 1001 2000.4 1001C1832.87 1001 1665.33 1001 1497.8 1001C1330.27 1001 1162.73 1001 995.2 1001C827.667 1001 660.133 1001 492.6 1001C325.067 1001 157.533 1001 73.7667 1001H-10V0Z' fill='%23800F93' fill-opacity='0.86'/%3E%3C/g%3E%3Cdefs%3E%3Cfilter id='filter0_i_6_171' x='-10' y='0' width='2535' height='1080' filterUnits='userSpaceOnUse' color-interpolation-filters='sRGB'%3E%3CfeFlood flood-opacity='0' result='BackgroundImageFix'/%3E%3CfeBlend mode='normal' in='SourceGraphic' in2='BackgroundImageFix' result='shape'/%3E%3CfeColorMatrix in='SourceAlpha' type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0' result='hardAlpha'/%3E%3CfeOffset dx='22' dy='97'/%3E%3CfeGaussianBlur stdDeviation='39.5'/%3E%3CfeComposite in2='hardAlpha' operator='arithmetic' k2='-1' k3='1'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.8375 0 0 0 0 0.0718855 0 0 0 0 0.531255 0 0 0 0.22 0'/%3E%3CfeBlend mode='normal' in2='shape' result='effect1_innerShadow_6_171'/%3E%3C/filter%3E%3C/defs%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    color: var(--font-color-default);
+}
+button
+{
+    min-width: max(10%, 64px);
+    height: max(10%, 2rem);
+}
+
+.Button-default
+{
+    background-color: var(--button-color-default);
+}
+.Button-hovered
+{
+    background-color: var(--button-color-hovered);
+}
+.Button-pressed
+{
+    background-color: var(--button-color-pressed);
+}
+
+
+.Return-button
+{
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+}
