@@ -1,10 +1,20 @@
-import React from "react";
+import React, {useState} from "react";
+
 
 function ReturnButton(props)
 {
-    // (?) Minor changes in width
+    
+    let [currentState,setCurrentState] = useState("default");
+    // (?) TODO: possible rework
     return(
-        <div className="Return-button" onClick={props.onClick}>
+        <div 
+            className={"Return-button"+" Button-"+currentState}
+            onMouseEnter={() => setCurrentState("hovered")}
+            onMouseLeave={() => setCurrentState("default")}
+            onMouseDown={() => setCurrentState("pressed")}
+            onMouseUp={() => setCurrentState("default")}
+            onClick={props.onClick}
+            >
             <svg width="15" height="15" viewBox="0 0 9 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M8.57141 2.14285L3.21427 7.5L8.57141 12.8571L7.49998 15L-1.82561e-05 7.5L7.49998 -3.57628e-06L8.57141 2.14285Z" fill="white"/>
             </svg>
