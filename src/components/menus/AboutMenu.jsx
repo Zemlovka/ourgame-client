@@ -2,25 +2,42 @@ import React from "react";
 
 import { Navigate, Link , useNavigate} from "react-router-dom";
 
+import ReturnButton from "../ui_components/ReturnButton";
+
 function AboutMenu()
 {
     const navigate = useNavigate(); 
 
     return(
         <div className="Menu-container">
-            <div className="AboutMenuBox">
-               
-               <button onClick={returnToMainMenu} className="RoundReturnButton">
-                &lt;
-               </button>
+            <div className="Fancy-submenu" id="AboutMenu">
+                {/* TODO: This entire header part can be change with Component! */}
+                {/* TODO: Остальные комменты допишу потом :( */}
+                <div className="Submenu-header">
+                    <ReturnButton onClick={returnToMainMenu}></ReturnButton>
+                    <h1>About Game</h1>
+                </div>
 
-                <h1>About</h1>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Nihil reiciendis ipsum modi accusamus.
-                Iusto fugiat minima ratione enim doloribus autem.
-                Nisi maxime accusamus ad ratione quia sit suscipit tempore aut!
-                </p>
-                
+                <div className="Submenu-content">
+                    <div className="Desc-role-player">
+                        <h2>Player</h2>
+                        <p>TODO: text for player #1</p>
+                        <p>TODO: text for player #2</p>
+                        <p>TODO: text for player #3</p>
+                        <p>TODO: long text for player #4</p>
+                        <p>TODO: very very very very very long text for player #5</p>
+                    </div>
+                    <div className="Desc-role-host">
+                        <h2>Host</h2>
+                        <p>TODO: text for host #1</p>
+                        <p>TODO: text for host #2</p>
+                        <p>TODO: text for host #3</p>
+                        <p>TODO: text for host #4</p>
+                        <p>TODO: text for host #5</p>
+                        <p>TODO: text for host #6</p>
+                    </div>
+                </div>
+
             </div>
         </div>
 
@@ -28,7 +45,7 @@ function AboutMenu()
 
     function returnToMainMenu()
     {           
-        console.log("RETURN PRESSED!");
+        console.log("Returning to Main Menu!");
         navigate("/");
     }
 }

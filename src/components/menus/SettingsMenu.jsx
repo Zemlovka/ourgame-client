@@ -7,6 +7,8 @@ import OptionGame from "./settings_options/OptionGame"
 import OptionAudio from "./settings_options/OptionAudio"
 import OptionGraphics from "./settings_options/OptionGraphics"
 
+import ReturnButton from "../ui_components/ReturnButton";
+
 function SettingsMenu()
 {
     let [selectedOption,setSelectedOption] = useState(<OptionGame/>);
@@ -17,24 +19,22 @@ function SettingsMenu()
 
     return(
         <div className="Menu-container">
-            <div className="SettingsMenuBox">
+            <div className="Fancy-submenu" id="SettingsMenu">
+                <div className="Submenu-header">
+                    <ReturnButton onClick={returnToMainMenu}></ReturnButton>
+                    <h1>Settings</h1>
+                </div>
 
-                <button onClick={returnToMainMenu} className="RoundReturnButton">
-                    &lt;
-                </button>
-
-                <h1>Settings</h1>
-
-                <div className="ContainerSettings">
-                    <div className="ContainerSettingsOptions">
+                <div className="Submenu-content">
+                    <div className="Settings-options">
                         <button onClick={() => changeSettingsContentTo("GAME")}>Game</button>
                         <button onClick={() => changeSettingsContentTo("GRAPHICS")}>Graphics</button>
                         <button onClick={() => changeSettingsContentTo("AUDIO")}>Audio</button>
                     </div>
-                    <div className="ContainerSettingsContent">
+
+                    <div className="Settings-selected-option">
                         {selectedOption}
-                    </div>
-                    
+                    </div>  
                 </div>
             </div>
         </div>

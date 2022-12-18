@@ -12,6 +12,8 @@
 a {
     text-decoration: none;
 }
+
+/* 
 button {
 width: 150px;
 margin: 0 auto;
@@ -19,6 +21,7 @@ margin-top: 75px;
 background-color: #6832E3;
 border: none;
 }
+*/
 
 .App {
     background-color: #191D2F;
@@ -109,7 +112,8 @@ Menu
 
 .Menu {
     border-radius: 20px;
-    width: 420px;
+    width:80%;
+    max-width: 420px;
     box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
     padding-top: 30px;
     padding-bottom: 20px;
