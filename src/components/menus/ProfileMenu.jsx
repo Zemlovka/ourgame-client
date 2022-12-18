@@ -5,6 +5,7 @@ import {useNavigate} from "react-router-dom";
 import ReturnButton from "../ui_components/ReturnButton";
 
 
+
 function ProfileMenu()
 {
 
@@ -13,8 +14,8 @@ function ProfileMenu()
     // (?) User Data Placeholder
     let userData=
     {
-        username: "John Doe",
-        profileImage: "IMAGE_DEFAULT", // (?) Some Enum
+        username: localStorage.getItem('username'),
+        profileImage: localStorage.getItem('avatar'), // (?) Some Enum
         // (?) STATS
         gamesWon: 13,
         gamesTotal: 42,
@@ -52,8 +53,8 @@ function ProfileMenu()
 
                 <div className="Submenu-content">
                         <div className="Profile-info">
-                            <img className="Profile-pic" src={require("../../imgs/img_profile.jpg")}></img>
-                            <h2>Player Name</h2>
+                            <img className="Profile-pic" src={localStorage.getItem('avatar')}></img>
+                            <h2>{localStorage.getItem('username')}</h2>
                         </div>
 
                         <div className="Profile-stats">

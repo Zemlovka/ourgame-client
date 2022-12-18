@@ -112,7 +112,8 @@ function Auth() {
     fetch("http://25.74.83.186:8080/api/token", authOptions)
       .then(response => response.text())
       .then(result => {
-        localStorage.setItem("token", result)
+        console.log('token' + result);
+        localStorage.setItem("token", result);
 
 
         /////////////////////////////// fetch to get data inside fetch request (nested fetch)
@@ -135,8 +136,8 @@ function Auth() {
             let data = JSON.parse(result);
             localStorage.setItem("username", data['string']);
             localStorage.setItem("avatar", data['image']);
-            console.log(localStorage.getItem('username'));
-            console.log(localStorage.getItem('avatar'));
+            console.log("Username" +localStorage.getItem('username'));
+            console.log("Avatar" +localStorage.getItem('avatar'));
 
           })
           .catch(error => console.log('error', error));

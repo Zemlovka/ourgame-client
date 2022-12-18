@@ -6,9 +6,9 @@ import SimpleButton from "./ui_components/SimpleButton";
 function Main() {
 
     // [!] TEMP
-    if (!localStorage.getItem("isAuthenticated")) {
-        console.log("not authenticated");
-        console.log(localStorage.getItem("isAuthenticated"));
+    if (!localStorage.getItem("token")) {
+        console.log("Not authenticated");
+        console.log(localStorage.getItem("token"));
 
         return <Navigate replace to="/auth" />;
     } else {
