@@ -40,6 +40,7 @@ function LoginMenu({swapFunction,submitFunction})
     {
         setFormInput((formInput) => ({...formInput, [key]: value}));
     }
+    
 }
 
 export default LoginMenu;
