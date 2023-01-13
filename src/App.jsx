@@ -10,6 +10,7 @@ import './css/Submenu.css'
 import './css/AboutMenu.css'
 import './css/ProfileMenu.css'
 import './css/SettingsMenu.css'
+import './css/SearchMenu.css'
 import './css/Menus.css'
 
 //components
@@ -20,6 +21,8 @@ import Main from './components/Main'
 import AboutMenu from "./components/menus/AboutMenu"
 import ProfileMenu from "./components/menus/ProfileMenu"
 import SettingsMenu from "./components/menus/SettingsMenu"
+import SearchMenu from "./components/menus/SearchMenu"
+
 
 const App = () => {
     return (
@@ -31,6 +34,9 @@ const App = () => {
             <Route path="/profile" element={<ProfileMenu/>}/>
             <Route path="/about" element={<AboutMenu/>}/>
             <Route path="/settings" element={<SettingsMenu/>}/>
+
+            <Route path="/search" element={<SearchMenu/>}/>
+
 
         </Routes>
         </BrowserRouter>
