@@ -6,7 +6,6 @@ import SimpleInput from "../ui_components/SimpleInput";
 import DropdownCheckboxes from "../ui_components/DropdownCheckboxes";
 import LobbyListItem from "../ui_components/LobbyListItem";
 
-import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 
 

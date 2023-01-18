@@ -18,7 +18,7 @@ function Main() {
                     <h1 className="Title">Main Menu</h1>
 
                     <div className="Main-buttons">
-                        <Link to='/seacrh'>
+                        <Link to='/search'>
                             <SimpleButton className="Button"  text="Find a lobby"/>
                         </Link>
 
