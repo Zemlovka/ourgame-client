@@ -124,9 +124,21 @@ function SearchMenu() {
                                 autoComplete="off"
                                 label="Lobby's name"
                                 variant="outlined"
-                                sx={{color:'secondary'
-
-                                }}>
+                                color='primary'
+                                sx={{
+                                    fieldset: { 
+                                        //borderColor: "#6832E3",
+                                        color: 'white',
+                                        border: '2px solid #6832E3'
+                                        
+                                 },
+                                    'input': {
+                                        '&::placeholder': {
+                                        color: 'white !important'
+                                        }
+                                 
+                                  }}}
+                                  >
                             </TextField>
                             <SimpleButton text="">
                                 {<i class="fa-solid fa-sliders"></i>}

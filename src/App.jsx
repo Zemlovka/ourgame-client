@@ -27,44 +27,48 @@ import SettingsMenu from "./components/menus/SettingsMenu"
 import SearchMenu from "./components/menus/SearchMenu"
 import HostLobbyMenu from './components/menus/HostLobbyMenu';
 
-const theme=createTheme({
-    palette: {
-      type: 'dark',
-      primary: {
-        main: '#6832E3',
-      },
-      secondary: {
-        main: '#2E053D',
-      },
-      background: {
-        default: '#2E053D',
-      },
+const theme = createTheme({
+  overrides: {
+    //code to do
+  },
+  palette: {
+    type: 'dark',
+    primary: {
+      main: '#6832E3',
+      //main: '#8b008b',
     },
-    shape: {
-      borderRadius: 10,
+    secondary: {
+      main: '#2E053D',
     },
-  });
+    background: {
+      default: '#2E053D',
+    },
+  },
+  shape: {
+    borderRadius: 10,
+  },
+});
 
 
 const App = () => {
-    return (
-        <ThemeProvider theme={theme}>
-        <BrowserRouter>
+  return (
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
         <Routes>
-            <Route path="/auth" element={<Auth/>} />
-            <Route path="/" element={<Main/>} />
-            <Route path="/create" element={<HostLobbyMenu/>}/>
-            <Route path="/profile" element={<ProfileMenu/>}/>
-            <Route path="/about" element={<AboutMenu/>}/>
-            <Route path="/settings" element={<SettingsMenu/>}/>
+          <Route path="/auth" element={<Auth />} />
+          <Route path="/" element={<Main />} />
+          <Route path="/create" element={<HostLobbyMenu />} />
+          <Route path="/profile" element={<ProfileMenu />} />
+          <Route path="/about" element={<AboutMenu />} />
+          <Route path="/settings" element={<SettingsMenu />} />
 
-            <Route path="/search" element={<SearchMenu/>}/>
+          <Route path="/search" element={<SearchMenu />} />
 
 
         </Routes>
-        </BrowserRouter>
-        </ThemeProvider>
-    )
+      </BrowserRouter>
+    </ThemeProvider>
+  )
 }
 
 export default App
