@@ -5,10 +5,12 @@ import SimpleButton from "../ui_components/SimpleButton";
 import SimpleInput from "../ui_components/SimpleInput";
 import LobbyListItem from "../ui_components/LobbyListItem";
 
-import Modal from "../ui_components/Modal";
+
+import { TextField } from "@mui/material";
 
 
-import {useNavigate} from "react-router-dom";
+
+import { useNavigate } from "react-router-dom";
 
 function SearchMenu() {
     const navigate = useNavigate();
@@ -46,31 +48,33 @@ function SearchMenu() {
             .catch((error) => console.log("error", error));
     }
 
-    
+
     const renderLobbies = () => (
         //{lobbies.map(lobby =>(
         <>
             {
                 lobbies.map((lobby) => (
-                <LobbyListItem
-                    key={lobby.id}
-                    id={lobby.id}
-                    name={lobby.name}
-                    playersCount={lobby.playersCount}
-                    maxPlayers={lobby.maxPlayers}
-                    isPrivate={lobby.isPrivate}
-                    host={lobby.host}
-                
-                />
-            )
-            )}
+                    <LobbyListItem
+                        key={lobby.id}
+                        id={lobby.id}
+                        name={lobby.name}
+                        playersCount={lobby.playersCount}
+                        maxPlayers={lobby.maxPlayers}
+                        isPrivate={lobby.isPrivate}
+                        host={lobby.host}
+
+                    />
+                )
+                )}
         </>
-    ); 
+    );
 
     function handleChange(event) {
         event.persist();
         setSearchText(event.target.value);
     }
+
+
 
     useEffect(() => {
         console.log("Search message inside useEffect: ", searchText);
@@ -84,9 +88,9 @@ function SearchMenu() {
     }, [searchedLobbies]);
 
     function searchLobbies() {
-        
+
         let searchedLobbies = [];
-        
+
         lobbies.forEach((lobby) => {
             if (lobby.id.toString().includes(searchText) || lobby.name.toLowerCase().includes(searchText.toLowerCase())) {
                 //console.log("est takoe lobbi "+lobby.id);
@@ -94,8 +98,8 @@ function SearchMenu() {
             }
             //searchedLobbies.filter(lobby => !(lobby.id.toString().includes(searchText)));
             setSearchedLobbies(searchedLobbies);
-        }); 
-      
+        });
+
     }
 
     return (
@@ -108,10 +112,22 @@ function SearchMenu() {
                 <div className="Submenu-content">
                     <div className="Lobbies">
                         <div className="Lobby-list-header">
+                            {/* 
                             <SimpleInput
                                 placeholder="Search by name"
                                 onChange={handleChange}
                             ></SimpleInput>
+                            */}
+                            <TextField
+                                id="standard-basic"
+                                name="name"
+                                autoComplete="off"
+                                label="Lobby's name"
+                                variant="outlined"
+                                sx={{color:'secondary'
+
+                                }}>
+                            </TextField>
                             <SimpleButton text="">
                                 {<i class="fa-solid fa-sliders"></i>}
                             </SimpleButton>

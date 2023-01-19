@@ -21,15 +21,64 @@ function HostLobbyMenu() {
   function valuetext(value) {
     return `${value}`;
   }
+  const initialValues = {
+    name: "",
+    password: "",
+    maxPeople: 3,
+  };
 
+  /*
   const [maxPeople, setMaxPeople] = React.useState(3);
+  const [lobbyName, setLobbyName] = React.useState("");
+  const [lobbyPassword, setLobbyPassword] = React.useState("");
+  const [isPrivate, setIsPrivate] = React.useState(false);
+  */
+  const [values, setValues] = useState(initialValues);
 
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+
+    setValues({
+      ...values,
+      [name]: value,
+    });
+  };
+
+/*
   const handleChange = (event, newValue) => {
     setMaxPeople(newValue);
   };
+  */
+
 
   const createTheGame = () => {
     console.log("create")
+    console.log(values);
+/*
+    let dataHeader = new Headers();
+        dataHeader.append(
+            "Authorization",
+            "Bearer " + localStorage.getItem("token")
+        );
+        dataHeader.append("Access-Control-Allow-Origin", "*");
+        dataHeader.append(
+            "Access-Control-Allow-Methods",
+            "GET,PUT,POST,DELETE,PATCH,OPTIONS"
+        );
+
+        let dataOptions = {
+            method: "POST",
+            headers: dataHeader,
+            redirect: "follow",
+        };
+
+        fetch("http://25.74.83.186:8080/api/lobby/create", dataOptions)
+            .then((response) => response.text())
+            .then((result) => {
+                console.log(result)
+            })
+            .catch((error) => console.log("error", error));
+            */
   };
 
   return (
@@ -41,18 +90,26 @@ function HostLobbyMenu() {
         </div>
         <div className="Submenu-content" id="HostLobby">
           <div className="Host-form">
-            <div className="Host-input-container">
+            <form className="Host-input-container">
               <TextField
                 id="standard-basic"
+                name="name"
+                autoComplete="off"
+                  onChange={handleInputChange}
                 label="Lobby's name"
                 variant="standard"
               />
               <TextField
                 id="standard-basic"
-                label="Lobby's password (leave blank if there's not)"
+                name="password"
+                autoComplete="off"
+                type="password"
+                onChange={handleInputChange}
+                label="Lobby's password"
                 variant="standard"
+                helperText="leave blank if there's not"
               />
-            </div>
+            </form>
             {/* 
                         <Button
                             id="Host-upload-button"
@@ -68,11 +125,12 @@ function HostLobbyMenu() {
             */}
             <div className="Host-slider-container">
               <Typography id="non-linear-slider" gutterBottom>
-                Max people: {maxPeople}
+                Max people: {values.maxPeople}
               </Typography>
               <div className="Host-slider">
                 <Slider
-                  onChange={handleChange}
+                  name="maxPeople"
+                  onChange={handleInputChange}
                   aria-label="Small steps"
                   defaultValue={3}
                   getAriaValueText={valuetext}
