@@ -3,7 +3,6 @@ import React, { useEffect, useState, useRef } from "react";
 import ReturnButton from "../ui_components/ReturnButton";
 import SimpleButton from "../ui_components/SimpleButton";
 import SimpleInput from "../ui_components/SimpleInput";
-import DropdownCheckboxes from "../ui_components/DropdownCheckboxes";
 import LobbyListItem from "../ui_components/LobbyListItem";
 
 import { json, useNavigate } from "react-router-dom";
@@ -16,14 +15,12 @@ function SearchMenu() {
     const navigate = useNavigate();
 
     let [lobbies, setLobbies] = useState([]);
+    let [searchedLobbies, setSearchedLobbies] = useState([]);
 
     let [searchText, setSearchText] =useState("");
 
 
     function getLobbiesJson() {
-
-        let jsonResult;
-
         let dataHeader = new Headers();
         dataHeader.append("Authorization", "Bearer " + localStorage.getItem('token'));
         dataHeader.append("Access-Control-Allow-Origin", "*");
@@ -44,14 +41,13 @@ function SearchMenu() {
     }
 
     function insertLobbies() {
-        console.log(lobbies)
-
         const output = [];
+        //console.log((!searchedLobbies.length==0 ? searchedLobbies: lobbies));
 
         for (let lobby of lobbies) {
             output.push(
-                <LobbyListItem id={lobby.id}
-
+                <LobbyListItem 
+                    id={lobby.id}
                     name={lobby.name}
                     playersCount={lobby.playersCount}
                     maxPlayers={lobby.maxPlayers}
@@ -63,13 +59,28 @@ function SearchMenu() {
     }
 
     const handleChange = event => {
+        event.persist();
         setSearchText(event.target.value);
-        console.log('value is:', searchText);
         
       };
 
-    function searchLobbies(){
+      useEffect(() => {
+        console.log("Search message inside useEffect: ", searchText);
+        searchLobbies();
+        insertLobbies();
         
+      }, [searchText]);
+    
+
+    function searchLobbies(){
+        let searchedLobbies =[];
+        lobbies.forEach(lobby =>{
+            if (lobby.id.toString().includes(searchText)){
+                //console.log("est takoe lobbi "+lobby.id);
+                searchedLobbies.push(lobby);
+            }
+            setSearchedLobbies(searchedLobbies);
+        })
     }
 
 
@@ -100,7 +111,7 @@ function SearchMenu() {
                             <button onClick={() => {
                                 getLobbiesJson();
                             }}> Update</button>
-                            {insertLobbies()}
+                           {insertLobbies()}
                         </div>
 
                     </div>
