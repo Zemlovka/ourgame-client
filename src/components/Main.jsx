@@ -1,11 +1,12 @@
-import React, { useEffect, useState} from "react";
-import { Navigate, Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate, Navigate, Link } from "react-router-dom";
 
 
 import SimpleButton from "./ui_components/SimpleButton";
 import Button from '@mui/material/Button';
 
 function Main() {
+    const navigate = useNavigate();
 
     // [!] TEMP
     if (!localStorage.getItem("token")) {
@@ -20,30 +21,30 @@ function Main() {
                     <h1 className="Title">Main Menu</h1>
 
                     <div className="Main-buttons">
-                    
-                        <Link to='/search'>
-                        <Button variant="contained" color="primary">Find a lobby</Button>
-                        </Link>
 
-                        <Link to='/create'>
-                        <Button variant="contained" color="primary">Create a lobby</Button>
-                        </Link>
+                    <Button component={Link} to="/search" variant="contained" color="primary">
+                            Find a lobby
+                        </Button>
 
-                        <Link to='/profile'>
-                        <Button variant="contained" color="primary">My profile</Button>
-                        </Link>
+                        <Button component={Link} to="/create" variant="contained" color="primary">
+                            Create a lobby
+                        </Button>
 
-                        <Link to='/about'>
-                        <Button variant="contained" color="primary">About</Button>
-                        </Link>
+                        <Button component={Link} to="/profile" variant="contained" color="primary">
+                            My profile
+                        </Button>
 
-                        <Link to='/settings'>
-                        <Button variant="contained" color="primary">Settings</Button>
-                        </Link>
+                        <Button component={Link} to="/about" variant="contained" color="primary">
+                            About
+                        </Button>
+
+                        <Button component={Link} to="/settings" variant="contained" color="primary">
+                            Settings
+                        </Button>
                     </div>
                 </div >
             </div>
-            
+
         );
     }
 };
