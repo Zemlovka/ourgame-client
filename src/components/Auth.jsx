@@ -59,44 +59,6 @@ function Auth() {
 
 
   function login(authRequest) {
-    /*
-    console.log("Searcing user...");
-    for (let i = 0; i < users.length; i++) 
-    {
-      if ((formInput["password"]===users[i].password) && (formInput["username"]===users[i].username))
-      {
-        console.log("User found...");
-        console.log("User authenticated? ",isAuthenticated);
-        if(isAuthenticated)
-        {
-          console.log('User SHOULD BE ALREADY logged in...');
-          localStorage.setItem("isAuthenticated",true)
-          navigate("/");
-        }
-        else
-        {
-          setAuthenticated(true);
-          localStorage.setItem("isAuthenticated",true)
-          console.log("User authenticated!");
-          navigate("/");
-        }
-        
-        return;
-      }
-    } 
-    console.log("User not found...");
-    */
-    /*
-    let authURL = "25.74.83.186:8080/api/token";
- 
-     axios.post(authURL, authRequest)
-     .then(resp => {
-       console.log("cekam tyvole")
-       console.log(resp.data);
-       localStorage.setItem(resp.data)})
-       .catch(err => console.log(err))
-     
-       */
 
     let authHeader = new Headers();
     authHeader.append("Authorization", authRequest);
@@ -104,12 +66,12 @@ function Auth() {
     authHeader.append("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,PATCH,OPTIONS");
 
     let authOptions = {
-      method: 'POST',
+      method: 'GET',
       headers: authHeader,
       redirect: 'follow'
     };
 
-    fetch("http://25.74.83.186:8080/api/token", authOptions)
+    fetch("http://25.74.83.186:8080/api/user/token", authOptions)
       .then(response => response.text())
       .then(result => {
         console.log('token' + result);
@@ -129,7 +91,7 @@ function Auth() {
         };
 
 
-        fetch("http://25.74.83.186:8080/api/test", dataOptions)
+        fetch("http://25.74.83.186:8080/api/user/stats", dataOptions)
           .then(response => response.text())
           .then(result => {
             console.log("data" + result);

@@ -23,6 +23,7 @@ function LoginMenu({swapFunction,submitFunction})
                     type="password"
                     className="Input-field"
                     placeholder="Password"
+                    suggested="current-password"
                     onChange={(event) => setFormInputValue( "password", event.target.value)}
                     />                   
                 <SimpleButton className="Button" type="submit" text="Submit"/>

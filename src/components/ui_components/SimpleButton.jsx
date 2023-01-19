@@ -15,6 +15,7 @@ function SimpleButton(props)
         onMouseUp={() => setCurrentState("default")}
         type={props.type}
         onClick={props.onClick}>
+        {props.children}
         {props.text}
     </button>
     );
@@ -27,5 +28,6 @@ SimpleButton.defaultProps =
     text: "PRESS ME",
     type: "button",
 };
+
 
 export default SimpleButton;
