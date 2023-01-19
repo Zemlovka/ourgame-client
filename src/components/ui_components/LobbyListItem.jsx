@@ -1,13 +1,14 @@
+import { useState } from "react";
 import SimpleButton from "./SimpleButton";
 // 🔑🙂☹️
 
-function LobbyListItem(props)
-{
+function LobbyListItem(lobby) {
+
     return(
-        <div className="Lobby-item">
-            <div className="Title">Lobby title</div>
-            <div className="Player-count">5/6 🙂</div>
-            <div className="With-password">🔑</div>
+        <div className="Lobby-item" id={lobby.id}>
+            <div className="Title">{lobby.name}</div>
+            <div className="Player-count">{lobby.playersCount}/{lobby.maxPlayers} 🙂</div>
+            <div className="With-password">{lobby.private? "🔒" : "🔓"}</div>
             <SimpleButton text="Join"/>
         </div>)
 }
