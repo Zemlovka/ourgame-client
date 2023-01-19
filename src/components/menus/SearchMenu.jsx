@@ -99,7 +99,7 @@ function SearchMenu() {
     }
 
     return (
-        <div className="Wrapper-submenu">
+        <div className="Wrapper-submenu" >
             <div className="Submenu-box" id="SearchMenu">
                 <div className="Submenu-header">
                     <ReturnButton onClick={returnToMainMenu}></ReturnButton>
