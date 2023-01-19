@@ -23,6 +23,32 @@ function LobbyListItem(lobby) {
       p: 4,
     };
 
+    function connectToLobby(lobby){
+        let dataHeader = new Headers();
+        dataHeader.append(
+            "Authorization",
+            "Bearer " + localStorage.getItem("token")
+        );
+        dataHeader.append("Access-Control-Allow-Origin", "*");
+        dataHeader.append(
+            "Access-Control-Allow-Methods",
+            "GET,PUT,POST,DELETE,PATCH,OPTIONS"
+        );
+
+        let dataOptions = {
+            method: "POST",
+            headers: dataHeader,
+            redirect: "follow",
+        };
+        
+        fetch(`http://25.74.83.186:8080/api/lobby/join/${lobby.id}`, dataOptions)
+            .then((response) => response.text())
+            .then((result) => {
+                console.log(result)
+            })
+            .catch((error) => console.log("error", error));
+    }
+
     return (
         <div className={"Lobby-item"} id={lobby.id}>
             <div className="Title">{lobby.name}</div>
@@ -37,13 +63,13 @@ function LobbyListItem(lobby) {
             >
                 <Box sx={modalStyle}>
                     <Typography id="modal-modal-title" variant="h6" component="h2">
-                        {lobby.name} by {lobby.host.username}
+                        {lobby.name.toUpperCase()} BY {lobby.host.username.toUpperCase()}
                     </Typography>
                     <div></div>
                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+                        Pls help
                     </Typography>
-                    <Button onClick={() =>{console.log("try to connect to "+lobby.id)}}>Join</Button>
+                    <Button onClick={()=>{connectToLobby(lobby)}}>Join</Button>
                 </Box>
             </Modal>
         </div>)

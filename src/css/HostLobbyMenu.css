@@ -1,0 +1,25 @@
+#HostLobby{
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
+    height: 90%;
+}
+#HostLobby div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.Host-input-container{
+    flex-direction: column;
+}
+#HostLobby .Host-form{
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+.Host-slider{
+    display: block !important;
+    min-width: 150px;
+}
+.Host-slider-container{
+    flex-direction: column;
+}

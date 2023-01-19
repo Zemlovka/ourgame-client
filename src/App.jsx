@@ -14,6 +14,7 @@ import './css/ProfileMenu.css'
 import './css/SettingsMenu.css'
 import './css/SearchMenu.css'
 import './css/Menus.css'
+import './css/HostLobbyMenu.css'
 
 //components
 import Auth from './components/Auth'
@@ -24,6 +25,7 @@ import AboutMenu from "./components/menus/AboutMenu"
 import ProfileMenu from "./components/menus/ProfileMenu"
 import SettingsMenu from "./components/menus/SettingsMenu"
 import SearchMenu from "./components/menus/SearchMenu"
+import HostLobbyMenu from './components/menus/HostLobbyMenu';
 
 const theme=createTheme({
     palette: {
@@ -51,7 +53,7 @@ const App = () => {
         <Routes>
             <Route path="/auth" element={<Auth/>} />
             <Route path="/" element={<Main/>} />
-
+            <Route path="/create" element={<HostLobbyMenu/>}/>
             <Route path="/profile" element={<ProfileMenu/>}/>
             <Route path="/about" element={<AboutMenu/>}/>
             <Route path="/settings" element={<SettingsMenu/>}/>
