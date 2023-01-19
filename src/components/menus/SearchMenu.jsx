@@ -19,8 +19,6 @@ function SearchMenu() {
     let [searchedLobbies, setSearchedLobbies] = useState([]);
     let [searchText, setSearchText] = useState("");
 
-    let [openConnectionModal, setOpenConnectionModal] = useState(false);
-
     function getLobbiesJson() {
         let dataHeader = new Headers();
         dataHeader.append(
@@ -43,7 +41,6 @@ function SearchMenu() {
             .then((response) => response.text())
             .then((result) => {
                 setLobbies(JSON.parse(result));
-                console.log(JSON.parse(result))
             })
             .catch((error) => console.log("error", error));
     }
@@ -86,6 +83,11 @@ function SearchMenu() {
         renderLobbies()
 
     }, [searchedLobbies]);
+
+    useEffect(() => {
+        renderLobbies()
+
+    }, [lobbies]);
 
     function searchLobbies() {
 
