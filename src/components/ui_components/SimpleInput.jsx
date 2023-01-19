@@ -3,6 +3,7 @@ import React, { useState } from "react";
 function SimpleInput(props) {
   // (?) All possible states: default / focused
   let [currentState, setCurrentState] = useState("default");
+  
 
   return (
     <div className={props.className}>

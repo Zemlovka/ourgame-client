@@ -61,19 +61,19 @@ function ProfileMenu()
                             <h2>Statistics</h2>
                             <div className="Stats-grid">
                                 <div className="Stat-label">Games played total</div>
-                                <div className="Stat-value">9999</div>
+                                <div className="Stat-value">200</div>
 
                                 <div className="Stat-label">Percentage of wins</div>
-                                <div className="Stat-value">99 %</div>
+                                <div className="Stat-value">45 %</div>
 
                                 <div className="Stat-label">Average reaction time</div>
-                                <div className="Stat-value">9999 ms</div>
+                                <div className="Stat-value">20ms</div>
 
                                 <div className="Stat-label">First game played</div>
-                                <div className="Stat-value">99-99-9999</div>
+                                <div className="Stat-value">01-01-2020</div>
 
                                 <div className="Stat-label">Last game played</div>
-                                <div className="Stat-value">99-99-9999</div>
+                                <div className="Stat-value">19-01-2023</div>
                             </div>
                         </div>
                 </div>

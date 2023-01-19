@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, Navigate, Link } from "react-router-dom";
+import {Navigate, Link } from "react-router-dom";
 
 
 import SimpleButton from "./ui_components/SimpleButton";
 import Button from '@mui/material/Button';
 
 function Main() {
-    const navigate = useNavigate();
 
     // [!] TEMP
     if (!localStorage.getItem("token")) {

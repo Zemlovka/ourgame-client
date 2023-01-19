@@ -41,6 +41,7 @@ function SearchMenu() {
             .then((response) => response.text())
             .then((result) => {
                 setLobbies(JSON.parse(result));
+                console.log(JSON.parse(result))
             })
             .catch((error) => console.log("error", error));
     }
@@ -58,6 +59,8 @@ function SearchMenu() {
                     playersCount={lobby.playersCount}
                     maxPlayers={lobby.maxPlayers}
                     isPrivate={lobby.isPrivate}
+                    host={lobby.host}
+                
                 />
             )
             )}
