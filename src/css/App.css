@@ -103,3 +103,6 @@ button
 
     border-radius: 50%;
 }
+.hidden {
+    display: none !important;
+}
