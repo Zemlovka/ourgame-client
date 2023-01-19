@@ -1,5 +1,7 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+
 // CSS
 import './css/App.css'
 import './css/Wrappers.css'
@@ -23,9 +25,28 @@ import ProfileMenu from "./components/menus/ProfileMenu"
 import SettingsMenu from "./components/menus/SettingsMenu"
 import SearchMenu from "./components/menus/SearchMenu"
 
+const theme=createTheme({
+    palette: {
+      type: 'dark',
+      primary: {
+        main: '#6832E3',
+      },
+      secondary: {
+        main: '#2E053D',
+      },
+      background: {
+        default: '#2E053D',
+      },
+    },
+    shape: {
+      borderRadius: 10,
+    },
+  });
+
 
 const App = () => {
     return (
+        <ThemeProvider theme={theme}>
         <BrowserRouter>
         <Routes>
             <Route path="/auth" element={<Auth/>} />
@@ -40,6 +61,7 @@ const App = () => {
 
         </Routes>
         </BrowserRouter>
+        </ThemeProvider>
     )
 }
 

@@ -1,7 +1,9 @@
 import React, { useEffect, useState} from "react";
 import { Navigate, Link } from "react-router-dom";
 
+
 import SimpleButton from "./ui_components/SimpleButton";
+import Button from '@mui/material/Button';
 
 function Main() {
 
@@ -18,24 +20,25 @@ function Main() {
                     <h1 className="Title">Main Menu</h1>
 
                     <div className="Main-buttons">
+                    
                         <Link to='/search'>
-                            <SimpleButton className="Button"  text="Find a lobby"/>
+                        <Button variant="contained" color="primary">Find a lobby</Button>
                         </Link>
 
                         <Link to='/create'>
-                            <SimpleButton className="Button" text="Create a lobby"/>
+                        <Button variant="contained" color="primary">Create a lobby</Button>
                         </Link>
 
                         <Link to='/profile'>
-                            <SimpleButton className="Button" text="Profile"/>
+                        <Button variant="contained" color="primary">My profile</Button>
                         </Link>
 
                         <Link to='/about'>
-                            <SimpleButton className="Button"  text="About"/>
+                        <Button variant="contained" color="primary">About</Button>
                         </Link>
 
                         <Link to='/settings'>
-                            <SimpleButton className="Button" text="Settings"/>
+                        <Button variant="contained" color="primary">Settings</Button>
                         </Link>
                     </div>
                 </div >
