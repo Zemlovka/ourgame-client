@@ -6,7 +6,7 @@ import SimpleInput from "../ui_components/SimpleInput";
 import LobbyListItem from "../ui_components/LobbyListItem";
 
 
-import { TextField } from "@mui/material";
+import { Skeleton, TextField } from "@mui/material";
 
 
 
@@ -14,6 +14,9 @@ import { useNavigate } from "react-router-dom";
 
 function SearchMenu() {
     const navigate = useNavigate();
+
+
+    const [isLoading, setIsLoading] = useState(false);
 
     let [lobbies, setLobbies] = useState([]);
     let [searchedLobbies, setSearchedLobbies] = useState([]);
@@ -41,16 +44,17 @@ function SearchMenu() {
             .then((response) => response.text())
             .then((result) => {
                 setLobbies(JSON.parse(result));
+                setIsLoading(false);
             })
             .catch((error) => console.log("error", error));
     }
 
 
     const renderLobbies = () => (
-        //{lobbies.map(lobby =>(
         <>
             {
-                lobbies.map((lobby) => (
+                lobbies.filter(lobby => lobby.id>3).map((lobby) => (
+                   
                     <LobbyListItem
                         key={lobby.id}
                         id={lobby.id}
@@ -59,8 +63,10 @@ function SearchMenu() {
                         maxPlayers={lobby.maxPlayers}
                         isPrivate={lobby.isPrivate}
                         host={lobby.host}
-
                     />
+                    /*
+                   <Skeleton height={100} animation="wave"></Skeleton>
+                   */
                 )
                 )}
         </>
@@ -75,14 +81,15 @@ function SearchMenu() {
 
     useEffect(() => {
         console.log("Search message inside useEffect: ", searchText);
-        searchLobbies();
-
+        //searchLobbies();
     }, [searchText]);
 
+    /*
     useEffect(() => {
         renderLobbies()
 
     }, [searchedLobbies]);
+    */
 
     useEffect(() => {
         renderLobbies()

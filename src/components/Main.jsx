@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {Navigate, Link } from "react-router-dom";
+import { Navigate, Link } from "react-router-dom";
 
 
 import SimpleButton from "./ui_components/SimpleButton";
@@ -21,7 +21,7 @@ function Main() {
 
                     <div className="Main-buttons">
 
-                    <Button component={Link} to="/search" variant="contained" color="primary">
+                        <Button component={Link} to="/search" variant="contained" color="primary">
                             Find a lobby
                         </Button>
 
@@ -36,10 +36,11 @@ function Main() {
                         <Button component={Link} to="/about" variant="contained" color="primary">
                             About
                         </Button>
-
+                        {/* 
                         <Button component={Link} to="/settings" variant="contained" color="primary">
                             Settings
                         </Button>
+                        */}
                     </div>
                 </div >
             </div>

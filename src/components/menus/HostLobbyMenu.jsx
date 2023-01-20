@@ -21,6 +21,7 @@ function HostLobbyMenu() {
   function valuetext(value) {
     return `${value}`;
   }
+
   const initialValues = {
     name: "",
     password: "",
@@ -54,7 +55,7 @@ function HostLobbyMenu() {
   const createTheGame = () => {
     console.log("create")
     console.log(values);
-/*
+
     let dataHeader = new Headers();
         dataHeader.append(
             "Authorization",
@@ -78,7 +79,7 @@ function HostLobbyMenu() {
                 console.log(result)
             })
             .catch((error) => console.log("error", error));
-            */
+            
   };
 
   return (

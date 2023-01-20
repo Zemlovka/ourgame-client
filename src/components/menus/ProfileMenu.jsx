@@ -3,6 +3,7 @@ import React from "react";
 import {useNavigate} from "react-router-dom";
 
 import ReturnButton from "../ui_components/ReturnButton";
+import { Button } from "@mui/material";
 
 
 
@@ -11,35 +12,16 @@ function ProfileMenu()
 
     const navigate = useNavigate(); 
 
-    // (?) User Data Placeholder
-    let userData=
-    {
-        username: localStorage.getItem('username'),
-        profileImage: localStorage.getItem('avatar'), // (?) Some Enum
-        // (?) STATS
-        gamesWon: 13,
-        gamesTotal: 42,
-
-        questionsAnswered: 222,
-        reactionTimeTotal: 345.67,  // (?) Time in Seconds
-
-        gameLast: "12-12-2022", // (?) Date or DateTime
-        gameFirst: "11-12-2022"
+    const logout =() =>{
+        localStorage.removeItem('token');
+        localStorage.removeItem('username');
+        localStorage.removeItem('avatar');
+        navigate("/auth");
     }
-    // (?) Un-used functions
     /*
-    function calculateWinRation(won,all)
-    {
-        // [!] TODO: Zero Division Exception
-        return String(Math.floor(won/all*10000)/100);
-    }
-
-    function calculateAvgReactionTime(time,questions)
-    {
-        // [!] TODO: Zero Division Exception
-        return String(Math.floor(time/questions*100)/100);
-    }
-
+    avatar:https://lh3.googleusercontent.com/aPeSCag8eHV8Xfsu2FdRzRrV0KzD3CWkO8jGbvGZSFIvA_5-8BJ6cHh0lkvqXeUYFwDRp03pH3HdqMNv9--Pv_jw0z1USaKyjg=s400
+    username: user1
+    token:eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoidXNlcjEiLCJleHAiOjE2NzQyMDg1NzksImlhdCI6MTY3NDEyMjE3OSwic2NvcGUiOiJST0xFX1VTRVIifQ.r88PnRGU_Hv31Qi3lu-T8cJQr6Y9E_PxkiJzeqbejDj8tLbNCTIlNn35aUCzA7LnhVHzRacqzSS4pAgGvx_VomKGCrRhxrdEqKpOE4dV5yG7e2Rc89YbVQigEY1Sggh4Mi_koGrV6dTs1dIPJY3w4mD5nNDJvbB6bMSb2JUefr85oL-pNflu1X0Kd3M682RRpuT7M4VWWqFSvIP15wcr-njm57YXZuTZ1sYCwpSGzy-MmaOEoOvMPpQtPqKzE7Sy2qNgF2V7WafY-yxzgzJmcRBdJHH-oTVKo9v3mN6Ip4B-9H9UKBoYzO8nGq2iFfxAt8FrNfSE7r5iAb0XO-I3QA
     */
 
     return(
@@ -55,6 +37,7 @@ function ProfileMenu()
                         <div className="Profile-info">
                             <img className="Profile-pic" src={localStorage.getItem('avatar')}></img>
                             <h2>{localStorage.getItem('username')}</h2>
+                            <Button variant="text" size="small" onClick={() =>{logout()}}>Not you?</Button>
                         </div>
 
                         <div className="Profile-stats">

@@ -7,6 +7,8 @@ import Modal from '@mui/material/Modal';
 // 🔑🙂☹️
 
 function LobbyListItem(lobby) {
+
+    
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -40,7 +42,7 @@ function LobbyListItem(lobby) {
             headers: dataHeader,
             redirect: "follow",
         };
-        
+
         fetch(`http://25.74.83.186:8080/api/lobby/join/${lobby.id}`, dataOptions)
             .then((response) => response.text())
             .then((result) => {
@@ -55,6 +57,7 @@ function LobbyListItem(lobby) {
             <div className="Player-count">{lobby.playersCount}/{lobby.maxPlayers} 🙂</div>
             <div className="With-password">{lobby.private ? "🔒" : "🔓"}</div>
             <Button onClick={handleOpen}>Join</Button>
+            
             <Modal
                 open={open}
                 onClose={handleClose}
