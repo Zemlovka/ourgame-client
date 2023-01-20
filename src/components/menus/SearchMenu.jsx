@@ -9,17 +9,14 @@ import { IconButton } from "@mui/material";
 import RefreshIcon from '@mui/icons-material/Refresh';
 
 
-import { Skeleton, TextField } from "@mui/material";
-
+import { TextField } from "@mui/material";
+import SearchTextField from "../ui_components/SearchTextField";
 
 
 import { useNavigate } from "react-router-dom";
 
 function SearchMenu() {
     const navigate = useNavigate();
-
-
-    const [isLoading, setIsLoading] = useState(false);
 
     let [lobbies, setLobbies] = useState([]);
     let [searchText, setSearchText] = useState("");
@@ -46,15 +43,16 @@ function SearchMenu() {
             .then((response) => response.text())
             .then((result) => {
                 setLobbies(JSON.parse(result));
-                setIsLoading(false);
             })
             .catch((error) => console.log("error", error));
     }
 
 
     const renderLobbies = () => (
+        //{lobbies.map(lobby =>(
         <>
             {
+
                 lobbies.filter(lobby => lobby.id >= 0).map((lobby) => (
                     <LobbyListItem
                         key={lobby.id}
@@ -64,10 +62,8 @@ function SearchMenu() {
                         maxPlayers={lobby.maxPlayers}
                         isPrivate={lobby.isPrivate}
                         host={lobby.host}
+
                     />
-                    /*
-                   <Skeleton height={100} animation="wave"></Skeleton>
-                   */
                 )
                 )}
         </>
@@ -82,15 +78,14 @@ function SearchMenu() {
 
     useEffect(() => {
         console.log("Search message inside useEffect: ", searchText);
-        //searchLobbies();
+        searchLobbies();
+
     }, [searchText]);
 
-    /*
     useEffect(() => {
         renderLobbies()
 
     }, [searchedLobbies]);
-    */
 
     useEffect(() => {
         renderLobbies()
@@ -117,39 +112,32 @@ function SearchMenu() {
                 <div className="Submenu-content">
                     <div className="Lobbies">
                         <div className="Lobby-list-header">
-                            {/* 
-                            <SimpleInput
-                                placeholder="Search by name"
-                                onChange={handleChange}
-                            ></SimpleInput>
-                            */}
-                            <TextField
+
+                            <SearchTextField
                                 id="standard-basic"
                                 name="name"
                                 onChange={handleChange}
                                 autoComplete="off"
                                 label="Lobby's name"
                                 variant="outlined"
-                                color='primary'
-                                sx={{
-                                    fieldset: {
-                                        //borderColor: "#6832E3",
-                                        color: 'white',
-                                        border: '2px solid #6832E3'
 
-                                    },
-                                    'input': {
-                                        '&::placeholder': {
-                                            color: 'white !important'
-                                        }
+                                placeholder="Lobby's name goes here"
 
-                                    }
-                                }}
-                            >
-                            </TextField>
-                            <IconButton color="primary" aria-label="refresh lobbies" onClick={()=>{getLobbies()}}>
-                                <RefreshIcon />
-                            </IconButton>
+                                >
+                            </SearchTextField>
+                            
+                            <div className="Button-container">
+                                <SimpleButton text="">
+                                    {<i class="fa-solid fa-sliders"></i>}
+                                </SimpleButton>
+                                <SimpleButton text="" onClick={() => {getLobbiesJson();}}>
+                                    {<i class="fa-solid fa-arrows-rotate"></i>}
+                                </SimpleButton>
+                            </div>
+
+   
+
+
                         </div>
 
                         <div className="Lobby-list-content">
