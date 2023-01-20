@@ -3,6 +3,8 @@ import React, {useState} from "react";
 import SimpleButton from "../ui_components/SimpleButton";
 import SimpleInput from "../ui_components/SimpleInput";
 
+import AuthTextField from "../ui_components/AuthTextField";
+
 function RegisMenu({swapFunction,submitFunction})
 {
     // (?) Data stored as Dictionary
@@ -13,18 +15,19 @@ function RegisMenu({swapFunction,submitFunction})
             <h1 className="Title">Sign up</h1>
 
             <form className="Auth-form" onSubmit={submitFunction(formInput)}>
-                <SimpleInput 
-                    type="text"
-                    className="Input-field"
+            <AuthTextField 
+                    id="standard-basic-name"
+                    name="name"
                     placeholder="New Username"
                     onChange={(event) => setFormInputValue( "username", event.target.value,)}
                     />
-                 <SimpleInput 
-                    type="password"
-                    className="Input-field"
-                    placeholder="New Password"
+                 <AuthTextField 
+                    id="standard-basic-password"
+                    name="password"
+                    placeholder="Your Password"
                     onChange={(event) => setFormInputValue( "password", event.target.value)}
-                    />                        
+                    />     
+                                          
                 <SimpleButton className="Button" type="submit" text="Submit"/>
             </form>
             

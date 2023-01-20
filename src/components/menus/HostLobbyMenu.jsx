@@ -13,6 +13,8 @@ import Modal from "@mui/material/Modal";
 import Slider from "@mui/material/Slider";
 import { TextField } from "@mui/material";
 
+import CreateTextField from "../ui_components/CreateTextField";
+
 import { useNavigate } from "react-router-dom";
 
 function HostLobbyMenu() {
@@ -21,7 +23,6 @@ function HostLobbyMenu() {
   function valuetext(value) {
     return `${value}`;
   }
-
   const initialValues = {
     name: "",
     password: "",
@@ -55,7 +56,7 @@ function HostLobbyMenu() {
   const createTheGame = () => {
     console.log("create")
     console.log(values);
-
+/*
     let dataHeader = new Headers();
         dataHeader.append(
             "Authorization",
@@ -79,7 +80,7 @@ function HostLobbyMenu() {
                 console.log(result)
             })
             .catch((error) => console.log("error", error));
-            
+            */
   };
 
   return (
@@ -92,15 +93,17 @@ function HostLobbyMenu() {
         <div className="Submenu-content" id="HostLobby">
           <div className="Host-form">
             <form className="Host-input-container">
-              <TextField
+              <CreateTextField
                 id="standard-basic"
                 name="name"
                 autoComplete="off"
                   onChange={handleInputChange}
                 label="Lobby's name"
                 variant="standard"
+          
+
               />
-              <TextField
+              <CreateTextField
                 id="standard-basic"
                 name="password"
                 autoComplete="off"
