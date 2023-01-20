@@ -1,0 +1,96 @@
+
+
+
+#ProfileMenu .Profile-info 
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+#ProfileMenu .Profile-info > .Profile-pic
+{
+    min-width: 150px;
+    min-height: 150px;
+    max-width: 550px;
+    max-height: 550px;
+    height: 40%;
+
+
+
+    margin-bottom: 1rem;
+    border-radius: 50%;
+    border: 1px solid #9f89d4a5;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Profile-pic img{
+    max-width:100%;
+    max-height:100%;
+
+}
+.Profile-stats{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.Profile-stats h2{
+text-align: center;
+}
+
+.Stats-grid 
+{
+    padding: 1rem;
+
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto auto;
+
+    width: 100%;
+    gap: 0.5rem 0.25rem;
+    margin: 0 auto;
+    font-size: 1vw;
+}
+
+.Stat-label, .Stat-value 
+{
+    display: block;
+    text-align: left;
+
+    font-size: 1.125rem;
+}
+.Stat-value 
+{
+    color: var(--font-color-marked);
+}
+
+@media only screen and (max-width: 600px)
+{
+    .Stat-label, .Stat-value 
+    {
+        font-size: 1rem;
+    }
+    #ProfileMenu .Profile-info 
+{
+    height: 300px;
+}
+.Stats-grid 
+{
+    padding: 1rem;
+
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto auto;
+
+    width: 80%;
+    gap: 0.5rem 0.25rem;
+    margin: 0 auto;
+    font-size: 1vw;
+}
+}

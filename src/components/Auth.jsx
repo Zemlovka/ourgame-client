@@ -1,112 +1,143 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
+import RegisMenu from "./menus/RegisMenu";
+import LoginMenu from "./menus/LoginMenu";
+import axios from "axios";
 
-export default function () {
-  let [authMode, setAuthMode] = useState("signin")
+function Auth() {
 
-  const [username, setusername] = useState("");
-  const [password, setpassword] = useState("");
-  const [authenticated, setauthenticated] = useState(localStorage.getItem("authenticated") || false);
+  // (?) Separate menus for Login and Registration
+  let loginMenu = <LoginMenu swapFunction={switchAuthMode} submitFunction={submitForm} />;
+  let regisMenu = <RegisMenu swapFunction={switchAuthMode} submitFunction={submitForm} />;
 
-  const users = [{ username: "1", password: "1234" }, { username: "2", password: "1" }]; //DB analog for tests :)
+  // (?) Current mode and Current menu
+  let [authMode, setAuthMode] = useState("LOGIN");
+  let [authMenu, setAuthMenu] = useState(loginMenu);
 
+  // [!] TEMP ----------------------------------------------------------------
+  let [isAuthenticated, setAuthenticated] = useState(localStorage.getItem("authenticated") || false);
+  // [!] TODO: Check why it doesn't work properly...
+  // let isAuthenticated = useRef( localStorage.getItem("isAuthenticated")===true ? true : false);
+  // DB analog for tests :)
+  const users = [{ username: "1", password: "1234" }, { username: " ", password: " " }, { username: "admin", password: "admin" }, { username: "ABOBA", password: "1" }];
+  // -------------------------------------------------------------------------
 
-  const navigate = useNavigate(); //navigation for redirect on login
+  // Navigation for redirection to Main Menu
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-
-    const account = users.find((user) => user.username === username);
-    if (localStorage.getItem("authenticated")) {
-      console.log('already logged in');
-    }
-    else if (account && account.password === password) {
-      setauthenticated(true)
-      localStorage.setItem("authenticated", true);
-      console.log('authenticated');
-      navigate("/");
-    }
-  };
-
-  const changeAuthMode = () => {
-    setAuthMode(authMode === "signin" ? "signup" : "signin")
-  }
-
-  if (authMode === "signin") {
+  function submitForm(formInput) {
+    // (!!!) Curring Pattern
+    // TODO: read more about this pattern...
     return (
-      <div className="Auth-form-container">
-        <form onSubmit={handleSubmit} className="Auth-form">
-          <div className="Auth-form-content">
-            <h3 className="Auth-form-title">Sign in</h3>
-            <div className="form-group mt-3">
-              <input
-                type="name"
-                className="form-control mt-1"
-                placeholder="Username"
-                onChange={(e) => setusername(e.target.value)}
-              />
-            </div>
-            <div className="form-group mt-3">
-              <input
-                type="password"
-                className="form-control mt-1"
-                placeholder="Password"
-                onChange={(e) => setpassword(e.target.value)}
-              />
-            </div>
-            <div className="d-grid gap-2 mt-3">
-              <button type="submit" className="btn btn-primary">
-                Submit
-              </button>
-              <div className="text-center">
-                Not registered yet?{" "}
-                <span className="link-primary" onClick={changeAuthMode}>
-                  Sign Up
-                </span>
-              </div>
-            </div>
+      (event) => {
+        console.log("User authenticated? ", isAuthenticated);
+        event.preventDefault();
+        console.log("Submition...");
 
-          </div>
-        </form>
-      </div>
-    )
+        let firstToken = formInput['username'] + ':' + formInput['password'];
+        let hash = btoa(firstToken);
+
+        let authRequest = "Basic " + hash; //для логина блять
+
+        console.log(formInput);
+        console.log(authRequest);
+
+        // [!] TODO: MASSIVE REWORK
+        switch (authMode) {
+          case "REGIS":
+            console.log("Registration...");
+            break;
+          case "LOGIN":
+            login(authRequest);
+            break;
+          default:
+        }
+      }
+    );
   }
+
+
+  function login(authRequest) {
+
+    let authHeader = new Headers();
+    authHeader.append("Authorization", authRequest);
+    authHeader.append("Access-Control-Allow-Origin", "*");
+    authHeader.append("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,PATCH,OPTIONS");
+
+    let authOptions = {
+      method: 'GET',
+      headers: authHeader,
+      redirect: 'follow'
+    };
+
+    fetch("http://25.74.83.186:8080/api/user/token", authOptions)
+      .then(response => response.text())
+      .then(result => {
+        console.log('token' + result);
+        localStorage.setItem("token", result);
+
+
+        /////////////////////////////// fetch to get data inside fetch request (nested fetch)
+        let dataHeader = new Headers();
+        dataHeader.append("Authorization", "Bearer " + localStorage.getItem('token'));
+        dataHeader.append("Access-Control-Allow-Origin", "*");
+        dataHeader.append("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,PATCH,OPTIONS");
+
+        let dataOptions = {
+          method: 'GET',
+          headers: dataHeader,
+          redirect: 'follow'
+        };
+
+
+        fetch("http://25.74.83.186:8080/api/user/stats", dataOptions)
+          .then(response => response.text())
+          .then(result => {
+            console.log("data" + result);
+            let data = JSON.parse(result);
+            localStorage.setItem("username", data['string']);
+            localStorage.setItem("avatar", data['image']);
+            console.log("Username" +localStorage.getItem('username'));
+            console.log("Avatar" +localStorage.getItem('avatar'));
+
+          })
+          .catch(error => console.log('error', error));
+        ///////////////////////////////////
+
+
+
+
+
+        navigate("/");
+      })
+      .catch(error => console.log('error', error));
+
+
+  }
+
+  function switchAuthMode() {
+    console.log("Switching Auth Mode...");
+    setAuthMode(authMode === "REGIS" ? "LOGIN" : "REGIS");
+
+    // [!] ОЧЕНЬ тупой способ (но рабочий)
+    // if(authMode === "REGIS") {authMode="LOGIN";} else {authMode="REGIS";}
+    // setAuthMode(authMode);
+    // if(authMode === "REGIS") {authMenu=<RegisMenu/>;} else {authMenu=<LoginMenu/>;}
+    // setAuthMenu(authMenu);
+
+    // [!] Если сделать изменение таким путем, то authMenu не изменится сразу
+    // setAuthMode(authMode === "REGIS" ? "LOGIN" : "REGIS");
+    // setAuthMenu(authMode === "REGIS" ? <RegisMenu/> : <LoginMenu/>);
+  }
+
+  useEffect(() => { setAuthMenu(authMode === "REGIS" ? regisMenu : loginMenu) }, [authMode]);
 
   return (
-    <div className="Auth-form-container">
-      <form className="Auth-form">
-        <div className="Auth-form-content">
-          <h3 className="Auth-form-title">Sign up</h3>
-
-          <div className="form-group mt-3">
-            <input
-              type="name"
-              className="form-control mt-1"
-              placeholder="Your unique username"
-            />
-          </div>
-          <div className="form-group mt-3">
-            <input
-              type="password"
-              className="form-control mt-1"
-              placeholder="Your strong password"
-            />
-          </div>
-          <div className="d-grid gap-2 mt-3">
-            <button type="submit" className="btn btn-primary">
-              Submit
-            </button>
-            <div className="text-center">
-              Already registered?{" "}
-              <span className="link-primary" onClick={changeAuthMode}>
-                Sign In
-              </span>
-            </div>
-          </div>
-
-        </div>
-      </form>
+    <div className="Wrapper-narrow">
+      {authMenu}
     </div>
   )
+
 }
+export default Auth;

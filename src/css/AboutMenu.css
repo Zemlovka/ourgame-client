@@ -1,0 +1,33 @@
+#AboutMenu > .Submenu-content
+{
+  padding: 1.5rem;
+  align-items: stretch;
+}
+
+#AboutMenu > .Submenu-content div
+{
+width: 50%;
+}
+
+
+.Desc-role-player, .Desc-role-host {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+}
+@media only screen and (max-width: 600px) {
+
+  #AboutMenu > .Submenu-content div
+{
+width: 100%;
+text-align: left;
+}
+#AboutMenu > .Submenu-content div *
+{
+width: 90%;
+
+}
+}
+

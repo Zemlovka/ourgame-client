@@ -9,10 +9,9 @@ function AboutMenu()
     const navigate = useNavigate(); 
 
     return(
-        <div className="Menu-container">
-            <div className="Fancy-submenu" id="AboutMenu">
-                {/* TODO: This entire header part can be change with Component! */}
-                {/* TODO: Остальные комменты допишу потом :( */}
+        <div className="Wrapper-submenu">
+            <div className="Submenu-box" id="AboutMenu">
+                {/* TODO: This entire header part can be change with Component... */}
                 <div className="Submenu-header">
                     <ReturnButton onClick={returnToMainMenu}></ReturnButton>
                     <h1>About Game</h1>
@@ -37,7 +36,6 @@ function AboutMenu()
                         <p>TODO: text for host #6</p>
                     </div>
                 </div>
-
             </div>
         </div>
 
