@@ -49,8 +49,19 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
+    
+      /* Hide scrollbar for IE, Edge and Firefox */
+
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+    
 }
 
+/* Hide scrollbar for Chrome, Safari and Opera */
+*::-webkit-scrollbar {
+    display: none;
+  }
+  
 a 
 {
     text-decoration: none;
@@ -59,6 +70,7 @@ a
 html, body, #root
 {
     height: 100%;
+    overflow: hidden;
 }
 #root {
     display: flex;
@@ -96,11 +108,9 @@ button
 {
     width: 42px;
     height: 42px;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     border-radius: 50%;
 }
 .hidden {

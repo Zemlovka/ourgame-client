@@ -5,6 +5,9 @@ import SimpleButton from "../ui_components/SimpleButton";
 import SimpleInput from "../ui_components/SimpleInput";
 import LobbyListItem from "../ui_components/LobbyListItem";
 
+import { IconButton } from "@mui/material";
+import RefreshIcon from '@mui/icons-material/Refresh';
+
 
 import { TextField } from "@mui/material";
 import SearchTextField from "../ui_components/SearchTextField";
@@ -16,10 +19,9 @@ function SearchMenu() {
     const navigate = useNavigate();
 
     let [lobbies, setLobbies] = useState([]);
-    let [searchedLobbies, setSearchedLobbies] = useState([]);
     let [searchText, setSearchText] = useState("");
 
-    function getLobbiesJson() {
+    function getLobbies() {
         let dataHeader = new Headers();
         dataHeader.append(
             "Authorization",
@@ -50,7 +52,8 @@ function SearchMenu() {
         //{lobbies.map(lobby =>(
         <>
             {
-                lobbies.map((lobby) => (
+
+                lobbies.filter(lobby => lobby.id >= 0).map((lobby) => (
                     <LobbyListItem
                         key={lobby.id}
                         id={lobby.id}
@@ -90,16 +93,11 @@ function SearchMenu() {
     }, [lobbies]);
 
     function searchLobbies() {
-
-        let searchedLobbies = [];
-
         lobbies.forEach((lobby) => {
             if (lobby.id.toString().includes(searchText) || lobby.name.toLowerCase().includes(searchText.toLowerCase())) {
-                //console.log("est takoe lobbi "+lobby.id);
-                searchedLobbies.push(lobby);
+                console.log("est takoe lobbi")
             }
-            //searchedLobbies.filter(lobby => !(lobby.id.toString().includes(searchText)));
-            setSearchedLobbies(searchedLobbies);
+
         });
 
     }
@@ -118,9 +116,11 @@ function SearchMenu() {
                             <SearchTextField
                                 id="standard-basic"
                                 name="name"
+                                onChange={handleChange}
                                 autoComplete="off"
                                 label="Lobby's name"
                                 variant="outlined"
+
                                 placeholder="Lobby's name goes here"
 
                                 >
@@ -141,6 +141,7 @@ function SearchMenu() {
                         </div>
 
                         <div className="Lobby-list-content">
+
                             {renderLobbies()}
                         </div>
                     </div>

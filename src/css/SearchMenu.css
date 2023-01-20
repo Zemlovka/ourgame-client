@@ -120,6 +120,7 @@
 
 .Lobbies
 {
+
     width: 100%;
 }
 
@@ -129,7 +130,8 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-
+    overflow-y: scroll;
+    flex-grow: 1;
     width: 100%;
     padding: 0 2rem;
     gap: 1rem;

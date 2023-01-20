@@ -35,11 +35,12 @@ function ProfileMenu()
 
                 <div className="Submenu-content">
                         <div className="Profile-info">
-                            <img className="Profile-pic" src={localStorage.getItem('avatar')}></img>
+                            <div className="Profile-pic">
+                            <img  src={localStorage.getItem('avatar')}></img>
+                            </div>
                             <h2>{localStorage.getItem('username')}</h2>
                             <Button variant="text" size="small" onClick={() =>{logout()}}>Not you?</Button>
                         </div>
-
                         <div className="Profile-stats">
                             <h2>Statistics</h2>
                             <div className="Stats-grid">
