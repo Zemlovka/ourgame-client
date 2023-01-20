@@ -27,28 +27,10 @@ import SettingsMenu from "./components/menus/SettingsMenu"
 import SearchMenu from "./components/menus/SearchMenu"
 import HostLobbyMenu from './components/menus/HostLobbyMenu';
 
-const theme = createTheme({
-  overrides: {
-    //code to do
-  },
-  palette: {
-    type: 'dark',
-    primary: {
-      main: '#6832E3',
-      //main: '#8b008b',
-    },
-    secondary: {
-      main: '#2E053D',
-    },
-    background: {
-      default: '#2E053D',
-    },
-  },
-  shape: {
-    borderRadius: 10,
-  },
-});
 
+import {createCustomTheme} from "./CustomTheme"  
+
+let theme = createCustomTheme();
 
 const App = () => {
   return (
