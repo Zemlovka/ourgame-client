@@ -86,7 +86,7 @@ html, body, #root
 }
 button
 {
-    min-width: max(10%, 64px);
+    
     height: max(10%, 2rem);
 }
 

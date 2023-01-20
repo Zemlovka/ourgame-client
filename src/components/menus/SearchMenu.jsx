@@ -107,7 +107,8 @@ function SearchMenu() {
                 <div className="Submenu-content">
                     <div className="Lobbies">
                         <div className="Lobby-list-header">
-
+                            <div className="Lobby-list-header-content">
+                            <div className="Lobby-search SearchTextField">
                             <SearchTextField
                                 id="standard-basic"
                                 name="name"
@@ -120,14 +121,17 @@ function SearchMenu() {
 
                                 >
                             </SearchTextField>
-                            
+                            </div>
                             <div className="Button-container">
+                                {/* 
                                 <SimpleButton text="">
                                     {<i class="fa-solid fa-sliders"></i>}
                                 </SimpleButton>
+                                */}
                                 <SimpleButton text="" onClick={() => {getLobbies();}}>
                                     {<i class="fa-solid fa-arrows-rotate"></i>}
                                 </SimpleButton>
+                            </div>
                             </div>
 
    

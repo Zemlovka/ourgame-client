@@ -5,18 +5,20 @@
     justify-content: center;
     align-items: stretch;
 
-    padding: 0.5rem;
+    padding-top: 1.5rem;
 }
 
-#SearchMenu button
+#SearchMenu button:not(.Lobby-item button)
 {
-
-    height: 2rem;
-
-    border: 0px;
-    border-radius: 10px;
-
+    width: 42px;
+    height: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #6832E3;
+    border-radius: 50%;
     font-size: 1.125rem;
+    background-color: transparent;
     color: var(--font-color-default);
 }
 
@@ -128,7 +130,7 @@
 {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+
     align-items: center;
     overflow-y: scroll;
     flex-grow: 1;
@@ -142,7 +144,7 @@
 {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     flex-wrap: nowrap;
     gap: 16px;
@@ -150,41 +152,73 @@
     width: 100%;
     height: auto;
 
-    padding: 0 2rem;
+
     margin: 0 0 1.5rem 0;
+}
+
+
+.Lobby-search{
+    width: 90%;
+}
+
+.Lobby-list-header-content{
+    display: flex;
+    width: 50%;
+    min-width: 250px;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .Lobby-list-header .Button-container
 {
-    min-width: 64px;
     width: auto;
     height: auto;
 
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     gap: 8px;
+
 }
 
 
-
-
-.Lobby-list-content > *
+.Lobby-item 
 {
-    display: flex;
-    flex-direction: row;
+   
     justify-content: space-between;
     align-items: center;
+    line-height: 100%;
+
+    display: grid;
+    grid-template-columns: 4fr 2fr 1fr 1fr;
 
     width: 100%;
-    background-color: var(--accent-color-blue);
+    max-width: 400px;
+    background-color: #6732e38f;
     
     border: 0px;
-    border-radius: 10px;
-    padding: 0 0 0 1rem;
+    border-radius: 20px;
+    padding: 0 1rem 0 1rem;
+}
+
+.Lobby-item > div:not(.Title)
+{
+display: flex;
+justify-content: center;
+align-items: center;
+height: 45px;
 }
 .Lobby-list-content > *:hover
 {
     background-color: var(--accent-color-green);
+}
+@media only screen and (max-width: 600px) {
+    .Lobby-list-header{
+        margin-top: 20px;
+    }
+    .Lobby-list-header-content{
+        justify-content: space-around;
+    }
+    
 }
