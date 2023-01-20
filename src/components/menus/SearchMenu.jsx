@@ -5,6 +5,9 @@ import SimpleButton from "../ui_components/SimpleButton";
 import SimpleInput from "../ui_components/SimpleInput";
 import LobbyListItem from "../ui_components/LobbyListItem";
 
+import { IconButton } from "@mui/material";
+import RefreshIcon from '@mui/icons-material/Refresh';
+
 
 import { Skeleton, TextField } from "@mui/material";
 
@@ -19,10 +22,9 @@ function SearchMenu() {
     const [isLoading, setIsLoading] = useState(false);
 
     let [lobbies, setLobbies] = useState([]);
-    let [searchedLobbies, setSearchedLobbies] = useState([]);
     let [searchText, setSearchText] = useState("");
 
-    function getLobbiesJson() {
+    function getLobbies() {
         let dataHeader = new Headers();
         dataHeader.append(
             "Authorization",
@@ -53,8 +55,7 @@ function SearchMenu() {
     const renderLobbies = () => (
         <>
             {
-                lobbies.filter(lobby => lobby.id>3).map((lobby) => (
-                   
+                lobbies.filter(lobby => lobby.id >= 0).map((lobby) => (
                     <LobbyListItem
                         key={lobby.id}
                         id={lobby.id}
@@ -97,16 +98,11 @@ function SearchMenu() {
     }, [lobbies]);
 
     function searchLobbies() {
-
-        let searchedLobbies = [];
-
         lobbies.forEach((lobby) => {
             if (lobby.id.toString().includes(searchText) || lobby.name.toLowerCase().includes(searchText.toLowerCase())) {
-                //console.log("est takoe lobbi "+lobby.id);
-                searchedLobbies.push(lobby);
+                console.log("est takoe lobbi")
             }
-            //searchedLobbies.filter(lobby => !(lobby.id.toString().includes(searchText)));
-            setSearchedLobbies(searchedLobbies);
+
         });
 
     }
@@ -130,39 +126,34 @@ function SearchMenu() {
                             <TextField
                                 id="standard-basic"
                                 name="name"
+                                onChange={handleChange}
                                 autoComplete="off"
                                 label="Lobby's name"
                                 variant="outlined"
                                 color='primary'
                                 sx={{
-                                    fieldset: { 
+                                    fieldset: {
                                         //borderColor: "#6832E3",
                                         color: 'white',
                                         border: '2px solid #6832E3'
-                                        
-                                 },
+
+                                    },
                                     'input': {
                                         '&::placeholder': {
-                                        color: 'white !important'
+                                            color: 'white !important'
                                         }
-                                 
-                                  }}}
-                                  >
+
+                                    }
+                                }}
+                            >
                             </TextField>
-                            <SimpleButton text="">
-                                {<i class="fa-solid fa-sliders"></i>}
-                            </SimpleButton>
+                            <IconButton color="primary" aria-label="refresh lobbies" onClick={()=>{getLobbies()}}>
+                                <RefreshIcon />
+                            </IconButton>
                         </div>
 
                         <div className="Lobby-list-content">
-                            <button
-                                onClick={() => {
-                                    getLobbiesJson();
-                                }}
-                            >
-                                {" "}
-                                Update
-                            </button>
+
                             {renderLobbies()}
                         </div>
                     </div>

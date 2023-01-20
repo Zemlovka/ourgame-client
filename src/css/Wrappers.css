@@ -24,13 +24,15 @@
 }
 .Wrapper-submenu
 {
-    width: min(80%,720px);
-    height: min(75%,480px);
-    
+    width: 80%;
+    height: 80%;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+@media only screen and (max-width: 600px) {
+    .Wrapper-submenu{
+        width: 95%;
 
-    /* For testing */
-    border: 0px dashed red;    
+}
 }
