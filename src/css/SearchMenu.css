@@ -120,7 +120,7 @@
 
 .Lobbies
 {
-    width: 50%;
+    width: 100%;
 }
 
 .Lobby-list-content
@@ -134,17 +134,40 @@
     padding: 0 2rem;
     gap: 1rem;
 }
+
+
 .Lobby-list-header
 {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-
+    flex-wrap: nowrap;
+    gap: 16px;
+    
     width: 100%;
+    height: auto;
+
     padding: 0 2rem;
     margin: 0 0 1.5rem 0;
 }
+
+.Lobby-list-header .Button-container
+{
+    min-width: 64px;
+    width: auto;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
+
+
+
+
 .Lobby-list-content > *
 {
     display: flex;
