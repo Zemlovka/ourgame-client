@@ -85,11 +85,6 @@ function SearchMenu() {
     useEffect(() => {
         renderLobbies()
 
-    }, [searchedLobbies]);
-
-    useEffect(() => {
-        renderLobbies()
-
     }, [lobbies]);
 
     function searchLobbies() {
@@ -130,7 +125,7 @@ function SearchMenu() {
                                 <SimpleButton text="">
                                     {<i class="fa-solid fa-sliders"></i>}
                                 </SimpleButton>
-                                <SimpleButton text="" onClick={() => {getLobbiesJson();}}>
+                                <SimpleButton text="" onClick={() => {getLobbies();}}>
                                     {<i class="fa-solid fa-arrows-rotate"></i>}
                                 </SimpleButton>
                             </div>
