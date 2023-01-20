@@ -112,6 +112,7 @@ button
     justify-content: center;
     align-items: center;
     border-radius: 50%;
+
 }
 .hidden {
     display: none !important;
