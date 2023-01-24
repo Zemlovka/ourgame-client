@@ -1,4 +1,11 @@
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import {
+  BrowserRouter,
+  generatePath,
+  Routes,
+  Route,
+  useNavigate,
+  useParams,
+} from "react-router-dom";
 
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 
@@ -19,6 +26,7 @@ import './css/HostLobbyMenu.css'
 //components
 import Auth from './components/Auth'
 import Main from './components/Main'
+import Lobby from './components/Lobby';
 
 // Other Menus
 import AboutMenu from "./components/menus/AboutMenu"
@@ -43,7 +51,7 @@ const App = () => {
           <Route path="/profile" element={<ProfileMenu />} />
           <Route path="/about" element={<AboutMenu />} />
           <Route path="/settings" element={<SettingsMenu />} />
-
+          <Route path="/lobby/:id" element={<Lobby/>}/>
           <Route path="/search" element={<SearchMenu />} />
 
 
