@@ -4,11 +4,20 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-// 🔑🙂☹️
+
+import {
+    BrowserRouter as Router,
+    generatePath,
+    Routes,
+    Route,
+    useNavigate,
+    useParams,
+  } from "react-router-dom";
 
 function LobbyListItem(lobby) {
 
-    
+    const navigate = useNavigate();
+
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -26,6 +35,7 @@ function LobbyListItem(lobby) {
     };
 
     function connectToLobby(lobby){
+
         let dataHeader = new Headers();
         dataHeader.append(
             "Authorization",
@@ -46,9 +56,17 @@ function LobbyListItem(lobby) {
         fetch(`http://25.74.83.186:8080/api/lobby/join/${lobby.id}`, dataOptions)
             .then((response) => response.text())
             .then((result) => {
-                console.log(result)
+                console.log(result);
+                const wsUrl=result;
+                const id = lobby.id;
+                
+                //navigate(generatePath("/lobby/:id", {id, wsUrl}));
+                const url= generatePath("/lobby/:id", {id})
+                navigate(url, { state: {wsUrl}});   
             })
             .catch((error) => console.log("error", error));
+
+            
     }
 
     return (
