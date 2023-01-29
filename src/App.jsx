@@ -22,6 +22,7 @@ import './css/SettingsMenu.css'
 import './css/SearchMenu.css'
 import './css/Menus.css'
 import './css/HostLobbyMenu.css'
+import "./css/InGame.css"
 
 //components
 import Auth from './components/Auth'
@@ -34,6 +35,9 @@ import ProfileMenu from "./components/menus/ProfileMenu"
 import SettingsMenu from "./components/menus/SettingsMenu"
 import SearchMenu from "./components/menus/SearchMenu"
 import HostLobbyMenu from './components/menus/HostLobbyMenu';
+
+// Lobby
+import LobbyExample from "./components_lobby/LobbyExample";
 
 
 import {createCustomTheme} from "./CustomTheme"  
@@ -54,6 +58,8 @@ const App = () => {
           <Route path="/lobby/:id" element={<Lobby/>}/>
           <Route path="/search" element={<SearchMenu />} />
 
+          {/* Example without Sockets */}
+          <Route path="/test" element={<LobbyExample />} />
 
         </Routes>
       </BrowserRouter>
