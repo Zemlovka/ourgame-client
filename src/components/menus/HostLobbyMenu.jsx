@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 
 import ReturnButton from "../ui_components/ReturnButton";
+import CustomButton from "../../components_mui_based/CustomButton";
 import SimpleButton from "../ui_components/SimpleButton";
 import SimpleInput from "../ui_components/SimpleInput";
 import LobbyListItem from "../ui_components/LobbyListItem";
@@ -11,9 +12,11 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 
 import Slider from "@mui/material/Slider";
+import CustomSlider from "../../components_mui_based/CustomSlider";
+
 import { TextField } from "@mui/material";
 
-import CreateTextField from "../ui_components/CreateTextField";
+import CreateTextField from "../../components_mui_based/CreateTextField";
 
 import { useNavigate } from "react-router-dom";
 
@@ -100,6 +103,9 @@ function HostLobbyMenu() {
                   onChange={handleInputChange}
                 label="Lobby's name"
                 variant="standard"
+                /* Error Example */
+                error={ values["name"].includes("!") ? true: false}
+                helperText={ values["name"].includes("!") ? "No Exclamation Marks": " "}
           
 
               />
@@ -111,7 +117,9 @@ function HostLobbyMenu() {
                 onChange={handleInputChange}
                 label="Lobby's password"
                 variant="standard"
-                helperText="leave blank if there's not"
+                /* Error Example */
+                error={ values["password"].includes("!") ? true: false}
+                helperText={ values["password"].includes("!") ? "No Exclamation Marks": "Leave blank if there's not"}
               />
             </form>
             {/* 
@@ -129,10 +137,11 @@ function HostLobbyMenu() {
             */}
             <div className="Host-slider-container">
               <Typography id="non-linear-slider" gutterBottom>
-                Max people: {values.maxPeople}
+                Max players: {values.maxPeople}
               </Typography>
               <div className="Host-slider">
-                <Slider
+                <div>1</div>
+                <CustomSlider
                   name="maxPeople"
                   onChange={handleInputChange}
                   aria-label="Small steps"
@@ -144,9 +153,12 @@ function HostLobbyMenu() {
                   max={6}
                   valueLabelDisplay="auto"
                 />
+                <div>6</div>
               </div>
             </div>
-            <Button variant="contained" onClick={createTheGame}>Create the game!</Button>
+            <CustomButton variant="contained"
+                          onClick={createTheGame}>Create the game!
+            </CustomButton>
           </div>
           <div>
             <h2>OR</h2>
