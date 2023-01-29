@@ -8,19 +8,7 @@
     padding-top: 1.5rem;
 }
 
-#SearchMenu button:not(.Lobby-item button)
-{
-    width: 42px;
-    height: 42px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid #6832E3;
-    border-radius: 50%;
-    font-size: 1.125rem;
-    background-color: transparent;
-    color: var(--font-color-default);
-}
+
 
 #SearchMenu .Forms,.Lobbies
 {
@@ -163,7 +151,7 @@
 
 .Lobby-list-header-content{
     display: flex;
-    width: 50%;
+    width: max(50%,400px);
     min-width: 250px;
     justify-content: space-around;
     align-items: center;
@@ -179,6 +167,7 @@
     justify-content: space-around;
     align-items: center;
     gap: 8px;
+    margin-left: 16px;
 
 }
 
