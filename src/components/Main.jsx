@@ -1,14 +1,24 @@
 import React, { useEffect, useState } from "react";
-import { Navigate, Link } from "react-router-dom";
+import { Navigate, Link, useNavigate } from "react-router-dom";
 
 
 import SimpleButton from "./ui_components/SimpleButton";
 import Button from '@mui/material/Button';
+import CustomButton from "../components_mui_based/CustomButton";
+
 
 function Main() {
 
+    const navigate = useNavigate();
+
+    
+    function transition(path)
+    {
+        navigate(path);
+    }
+
     // [!] TEMP
-    if (!localStorage.getItem("token")) {
+    if (!localStorage.getItem("token") && false) {
         console.log("Not authenticated");
         console.log(localStorage.getItem("token"));
 
@@ -21,21 +31,21 @@ function Main() {
 
                     <div className="Main-buttons">
 
-                        <Button component={Link} to="/search" variant="contained" color="primary">
+                        <CustomButton isUppercase={true} onClick={()=>{transition("/search")}} variant="contained">
                             Find a lobby
-                        </Button>
+                        </CustomButton>
 
-                        <Button component={Link} to="/create" variant="contained" color="primary">
+                        <CustomButton isUppercase={true}  onClick={()=>{transition("/create")}} variant="contained">
                             Create a lobby
-                        </Button>
+                        </CustomButton>
 
-                        <Button component={Link} to="/profile" variant="contained" color="primary">
+                        <CustomButton isUppercase={true}  onClick={()=>{transition("/profile")}} variant="contained">
                             My profile
-                        </Button>
+                        </CustomButton>
 
-                        <Button component={Link} to="/about" variant="contained" color="primary">
+                        <CustomButton isUppercase={true}  onClick={()=>{transition("/about")}} variant="contained">
                             About
-                        </Button>
+                        </CustomButton>
                         {/* 
                         <Button component={Link} to="/settings" variant="contained" color="primary">
                             Settings
