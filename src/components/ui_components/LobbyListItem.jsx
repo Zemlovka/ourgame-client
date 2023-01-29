@@ -13,6 +13,7 @@ import {
     useNavigate,
     useParams,
   } from "react-router-dom";
+import CustomCircleButton from '../../components_mui_based/CustomCircleButton';
 
 function LobbyListItem(lobby) {
 
@@ -74,7 +75,9 @@ function LobbyListItem(lobby) {
             <div className="Title">{lobby.name}</div>
             <div className="Player-count">{lobby.playersCount}/{lobby.maxPlayers} 🙂</div>
             <div className="With-password">{lobby.private ? "🔒" : "🔓"}</div>
-            <Button onClick={handleOpen}>Join</Button>
+            <CustomCircleButton isTransparent={false} onClick={handleOpen}>
+                <i className="fa-sharp fa-solid fa-angle-right"></i>
+            </CustomCircleButton>
             
             <Modal
                 open={open}
