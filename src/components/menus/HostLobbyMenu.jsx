@@ -5,7 +5,7 @@ import CustomButton from "../../components_mui_based/CustomButton";
 import SimpleButton from "../ui_components/SimpleButton";
 import SimpleInput from "../ui_components/SimpleInput";
 import LobbyListItem from "../ui_components/LobbyListItem";
-
+import CustomCircleButton from "../../components_mui_based/CustomCircleButton";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
@@ -90,7 +90,9 @@ function HostLobbyMenu() {
     <div className="Wrapper-submenu">
       <div className="Submenu-box">
         <div className="Submenu-header">
-          <ReturnButton onClick={returnToMainMenu}></ReturnButton>
+          <CustomCircleButton fontSize="1.5rem" diameter="42px" onClick={returnToMainMenu}>
+            <i className="fa-sharp fa-solid fa-angle-left"></i>
+          </CustomCircleButton>
           <h1>Host a lobby</h1>
         </div>
         <div className="Submenu-content" id="HostLobby">

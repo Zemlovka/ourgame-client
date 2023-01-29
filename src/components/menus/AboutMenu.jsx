@@ -3,6 +3,7 @@ import React from "react";
 import { Navigate, Link , useNavigate} from "react-router-dom";
 
 import ReturnButton from "../ui_components/ReturnButton";
+import CustomCircleButton from "../../components_mui_based/CustomCircleButton";
 
 function AboutMenu()
 {
@@ -13,7 +14,9 @@ function AboutMenu()
             <div className="Submenu-box" id="AboutMenu">
                 {/* TODO: This entire header part can be change with Component... */}
                 <div className="Submenu-header">
-                    <ReturnButton onClick={returnToMainMenu}></ReturnButton>
+                    <CustomCircleButton fontSize="1.5rem" diameter="42px" onClick={returnToMainMenu}>
+                        <i className="fa-sharp fa-solid fa-angle-left"></i>
+                    </CustomCircleButton>
                     <h1>About Game</h1>
                 </div>
 
