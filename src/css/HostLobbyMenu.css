@@ -5,23 +5,47 @@
 }
 #HostLobby div{
     display: flex;
-    align-items: center;
+
     justify-content: center;
+    align-items: stretch;
 }
-.Host-input-container{
-    flex-direction: column;
-}
+
+
 #HostLobby .Host-form{
-    margin-left: 16px;
-    flex-direction: column;
-    justify-content: space-between;
+    padding: 8px 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    grid-template-areas:
+    "F F F"
+    ". . ."
+    "S S S"
+    "B B .";
+   
+    justify-content: center;
+    align-items: center;
     height: 100%;
  
 }
+.Host-input-container
+{
+    flex-direction: column;
+    grid-area: F;
+}
+
+
 .Host-slider{
-    display: block !important;
+    display: column;
+    gap: 16px;
+
     min-width: 150px;
 }
 .Host-slider-container{
     flex-direction: column;
+    grid-area: S;
+   
+}
+.Host-form > button
+{
+    grid-area: B;
 }
