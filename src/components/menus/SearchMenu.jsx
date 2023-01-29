@@ -10,10 +10,11 @@ import RefreshIcon from '@mui/icons-material/Refresh';
 
 
 import { TextField } from "@mui/material";
-import SearchTextField from "../ui_components/SearchTextField";
+import SearchTextField from "../../components_mui_based/SearchTextField";
 
 
 import { useNavigate } from "react-router-dom";
+import CustomCircleButton from "../../components_mui_based/CustomCircleButton";
 
 function SearchMenu() {
     const navigate = useNavigate();
@@ -101,7 +102,9 @@ function SearchMenu() {
         <div className="Wrapper-submenu" >
             <div className="Submenu-box" id="SearchMenu">
                 <div className="Submenu-header">
-                    <ReturnButton onClick={returnToMainMenu}></ReturnButton>
+                    <CustomCircleButton fontSize="1.5rem" diameter="42px" onClick={returnToMainMenu}>
+                        <i className="fa-sharp fa-solid fa-angle-left"></i>
+                    </CustomCircleButton>
                     <h1>Find a Lobby</h1>
                 </div>
                 <div className="Submenu-content">
@@ -123,14 +126,12 @@ function SearchMenu() {
                             </SearchTextField>
                             </div>
                             <div className="Button-container">
-                                {/* 
-                                <SimpleButton text="">
-                                    {<i class="fa-solid fa-sliders"></i>}
-                                </SimpleButton>
-                                */}
-                                <SimpleButton text="" onClick={() => {getLobbies();}}>
-                                    {<i class="fa-solid fa-arrows-rotate"></i>}
-                                </SimpleButton>
+                                <CustomCircleButton  
+                                            isTransparent={true}
+                                            diameter="48px"
+                                            onClick={() => {getLobbies();}}>
+                                    <i className="fa-solid fa-arrows-rotate"></i>
+                                </CustomCircleButton>
                             </div>
                             </div>
 
@@ -140,7 +141,15 @@ function SearchMenu() {
                         </div>
 
                         <div className="Lobby-list-content">
-
+                                <LobbyListItem
+                                key="77777"
+                                id="77777"
+                                name="Lobby Test"
+                                playersCount="7"
+                                maxPlayers="7"
+                                isPrivate={true}
+                                host={{username: "Lobby Test"}}
+                                 />
                             {renderLobbies()}
                         </div>
                     </div>
