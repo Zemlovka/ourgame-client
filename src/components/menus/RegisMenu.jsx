@@ -3,7 +3,8 @@ import React, {useState} from "react";
 import SimpleButton from "../ui_components/SimpleButton";
 import SimpleInput from "../ui_components/SimpleInput";
 
-import AuthTextField from "../ui_components/AuthTextField";
+import AuthTextField from "../../components_mui_based/AuthTextField";
+import CustomButton from "../../components_mui_based/CustomButton";
 
 function RegisMenu({swapFunction,submitFunction})
 {
@@ -28,7 +29,7 @@ function RegisMenu({swapFunction,submitFunction})
                     onChange={(event) => setFormInputValue( "password", event.target.value)}
                     />     
                                           
-                <SimpleButton className="Button" type="submit" text="Submit"/>
+                <CustomButton type="submit">Submit</CustomButton>
             </form>
             
             <div className="Label">Already registered?
