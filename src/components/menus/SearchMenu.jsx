@@ -141,15 +141,6 @@ function SearchMenu() {
                         </div>
 
                         <div className="Lobby-list-content">
-                                <LobbyListItem
-                                key="77777"
-                                id="77777"
-                                name="Lobby Test"
-                                playersCount="7"
-                                maxPlayers="7"
-                                isPrivate={true}
-                                host={{username: "Lobby Test"}}
-                                 />
                             {renderLobbies()}
                         </div>
                     </div>

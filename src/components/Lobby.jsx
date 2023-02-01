@@ -9,6 +9,7 @@ import io from 'socket.io-client';
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
+import { useRef } from "react";
 
 
 function Lobby() {
@@ -16,38 +17,54 @@ function Lobby() {
     const { id } = useParams();
     const { state } = useLocation();
     const { wsUrl } = state;
-
+    const socket = useRef(null);
 
 
     /* socket */
-    const socket = io(`http://25.74.83.186${wsUrl}`);
+
+    //socket.current = io(`http://25.74.83.186${wsUrl}`);
     const [isConnected, setIsConnected] = useState(socket.connected);
-    const [lastPong, setLastPong] = useState(null);
+
+    const [lobby, setLobby] = useState({});
 
     useEffect(() => {
-        console.log(wsUrl);
-        socket.on('connect', () => {
+
+        socket.current = io(`http://25.74.83.186${wsUrl}`);
+
+        socket.current.on('connect', () => {
             setIsConnected(true);
+            console.log("socket connected");
         });
-
-        socket.on('disconnect', () => {
+        socket.current.on('disconnect', () => {
             setIsConnected(false);
+            console.log('socket disconnected');
         });
-
-        socket.on('pong', () => {
-            setLastPong(new Date().toISOString());
+        socket.current.on('lobby', (lobby) => {
+            setLobby(lobby);
+            console.log(lobby);
         });
 
         return () => {
-            socket.off('connect');
-            socket.off('disconnect');
-            socket.off('pong');
+            socket.current.off('connect');
+            socket.current.off('disconnect');
+            socket.current.off('lobby');
+            //socket.current.disconnect();
+            console.log("useEff return");
         };
     }, []);
 
+ 
+
+    /*
     const sendPing = () => {
-        socket.emit('ping');
+        socket.current.emit('ping');
     }
+    const disconnectSocket = () => {
+        console.log("Disconnecting socket...");
+        socket.current.disconnect();
+        setIsConnected(false);
+    }
+    */
     /* socket */
 
 
@@ -60,7 +77,10 @@ function Lobby() {
                 <div className="Submenu-header">
                     <ReturnButton onClick={returnToMainMenu}></ReturnButton>
                     <h1>Lobby {id}</h1>
+                    {/* 
                     <button onClick={ sendPing }>Send ping</button>
+                    <button onClick={ disconnectSocket }>DISCONNECT</button>
+                    */}
                 </div>
 
             </div>
