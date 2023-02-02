@@ -16,26 +16,29 @@ function QuestionBlock(props)
             <div className="Question-block-answer" style={{display: props.answerVisibility? "flex" : "none" }}>
                 {props.question.current["answer"]}
             </div>
-            <div className="Question-block-host-controls">
-                <div className="Answering-label">
-                    NOW ANSWERING:
+            { true && 
+                <div className="Question-block-host-controls">
+                    <div className="Answering-label">
+                        NOW ANSWERING:
+                    </div>
+                    <div className="Answering-player">
+                        User #42
+                    </div>
+                    <div className="Answering-label">
+                        CORRECT ANSWER:
+                    </div>
+                    <div className="Answering-label">
+                        Simple
+                    </div>
+                    <CustomButton onClick={()=>{props.callbackOnChangeScore(null,400)}}>
+                        Points +
+                    </CustomButton>
+                    <CustomButton onClick={()=>{props.callbackOnChangeScore(null,-400)}}>
+                        Points -
+                    </CustomButton>
                 </div>
-                <div className="Answering-player">
-                    User #42
-                </div>
-                <div className="Answering-label">
-                    CORRECT ANSWER:
-                </div>
-                <div className="Answering-label">
-                    Simple
-                </div>
-                <CustomButton>
-                    Points +
-                </CustomButton>
-                <CustomButton>
-                    Points -
-                </CustomButton>
-            </div>
+            }
+
             <div className="Question-block-timer">
                 <Timer state={timerState} setState={setTimerState}  />
             </div>

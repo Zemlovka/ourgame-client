@@ -70,10 +70,7 @@ function LobbyExample()
     {
         
     }
-    function onPointsChange()
-    {
 
-    }
  
 
     // Function Reveals Answer (only HOST)
@@ -86,6 +83,14 @@ function LobbyExample()
     {
         setGameState("SELECT")
     }
+    // Function ChangeScore
+    function onChangeScore(player,value)
+    {
+        console.log("Changing points for",player,"-->",value)
+
+    }
+
+
 
 
     // Function is called when some cell is selected
@@ -139,6 +144,7 @@ function LobbyExample()
                     <QuestionBlock
                         question={selectedQuestion}
                         answerVisibility={answerVisibility}
+                        callbackOnChangeScore={(player,value)=>{onChangeScore(player,value)}}
                     />
                 }
 
@@ -150,7 +156,7 @@ function LobbyExample()
                 <GameControls
                     userMode={userMode}
                     gameState={gameState}
-                    
+
                     callbackOnAnswerSubmit={()=>{onAnswerSubmit();}}
                     callbackOnRoundNext={()=>{onRoundNext();}}
                     callbackOnShowAnswer={()=>{onShowAnswer();}}
