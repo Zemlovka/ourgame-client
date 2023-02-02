@@ -3,7 +3,6 @@ import React, { useEffect, useState, useRef } from "react";
 import QuestionCell from "./QuestionCell";
 
 
-
 function QuestionGrid(props)
 {
 
@@ -14,7 +13,7 @@ function QuestionGrid(props)
         {
             style = style + " 1fr"
         }
-        console.log(style);
+        //console.log(style,numberOfCols);
         return style;
    }
 
@@ -23,11 +22,11 @@ function QuestionGrid(props)
         <div className="Question-grid" style={
             { gridTemplateColumns: generateTemplateColumns(props.gridOfQuestions.current.maxRowLength)}}>
             {
-                 props.gridOfQuestions.current.data.map(category =>
+                 props.gridOfQuestions.current.themes.map(category =>
                     {
                         return(
                             <React.Fragment>
-                                {/* А ЧТО ТАК МОЖНО БЫЛО?*/}
+
                                 <div className="Question-grid-cell Category">
                                     {category.name}
                                 </div>
@@ -37,6 +36,11 @@ function QuestionGrid(props)
                                         return(
                                                 <QuestionCell
                                                     price={question.price}
+                                                    isAnswered={question.isAnswered}
+                                                    canBeClicked={props.canBeClicked}
+                                                    callbackOnCellClicked={(row,col)=>{props.callbackOnCellClicked(row,col)}}
+                                                    col={question.col}
+                                                    row={question.row}
                                                 />
                                                 )})
                                 }

@@ -1,16 +1,34 @@
 
 import React, { useEffect, useState, useRef } from "react";
 
+import CustomButton from "../components_mui_based/CustomButton";
+
+
 function QuestionCell(props)
 {
+
+    function onClickEvent()
+    {
+        if (props.canBeClicked && ! props.isAnswered)
+        {
+            console.log("Cell",props.row,props.col,"was clicked!");
+            props.callbackOnCellClicked(props.row,props.col);
+        }
+        else 
+        {console.log("No click!");}
+    }
+
+
     return(
     
-            <div
+            <CustomButton
                 className="Question-field-cell Question"
-                onClick={()=>{console.log("Stop Clicking!!!")}}
+                borderRadius="0"
+                canBeClicked={props.canBeClicked && ! props.isAnswered}
+                onClick={()=>{onClickEvent()}}
             >
                 {props.price}
-            </div>
+            </CustomButton>
     )
 
 }
