@@ -34,7 +34,8 @@ function LobbyExample()
     let [userMode,  setUserMode]        = useState("HOST");     // HOST or PLAYER
     let [canSelect, setCanSelect]       = useState(true);         // false on connect
     let [gameState, setGameState]       = useState("SELECT");     // SELECT or ANSWER
-    let [answerState,setAnswerState]    = useState(false);        // false -> not given, true -> answer has been already pressed!
+    let [answerState,setAnswerState]    = useState(false);          // false -> not given, true -> answer has been already pressed!
+    let [answerVisibility, setAnswerVisibility ] = useState(false); // true -> answer is visible
 
     // ANSWER QUEUE
     let answerQueue = useRef({player: "Nickname 1"},{player: "Nickname 2"},)
@@ -75,6 +76,16 @@ function LobbyExample()
     }
  
 
+    // Function Reveals Answer (only HOST)
+    function onShowAnswer()
+    {
+        setAnswerVisibility(true);
+    }
+    // Function Returns to Table (only HOST)
+    function onReturnToTable()
+    {
+        setGameState("SELECT")
+    }
 
 
     // Function is called when some cell is selected
@@ -127,6 +138,9 @@ function LobbyExample()
                 { gameState=="ANSWER" && 
                     <QuestionBlock
                         question={selectedQuestion}
+                        answerVisibility={answerVisibility}
+                        callbackOnShowAnswer={()=>{onShowAnswer();}}
+                        callbackOnReturnToTable={()=>{onReturnToTable();}}
                     />
                 }
 
