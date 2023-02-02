@@ -1,4 +1,4 @@
-class Theme 
+class Category 
 {
     // Category name + Array of Questions
     constructor(name, questions)
@@ -7,4 +7,4 @@ class Theme
         this.questions=questions;
     }
 }
-export {Theme}
+export {Category}

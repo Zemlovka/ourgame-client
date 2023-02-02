@@ -2,7 +2,7 @@ import { Button } from "@mui/material";
 import {styled, withTheme } from "@mui/material/styles";
 
 const CustomButton = styled((Button))(
-  ({ theme , canBeClicked=true , ...props /* Тут Атрибуты  */
+  ({ theme , ...props /* Тут Атрибуты  */
      }) =>
 ({
 
@@ -22,39 +22,16 @@ const CustomButton = styled((Button))(
                         СТИЛИ
                   }),
       */
-      
-      ...(canBeClicked &&
+
+
+      ":hover": 
       {
-            ":hover": 
-            {
-                  backgroundColor: theme.palette.button.hovered,
-            },
-            ":active": 
-            {
-                  backgroundColor: theme.palette.button.pressed,
-            }                    
-      }),
-
-      ...(!canBeClicked &&
-            {
-                  ":hover": 
-                  {
-                        backgroundColor: props.backgroundColor? props.backgroundColor : theme.palette.secondary.dark,
-                  },
-                  ":active": 
-                  {
-                        backgroundColor: props.backgroundColor? props.backgroundColor : theme.palette.secondary.dark,
-                  }                    
-            }),
-
-
-
-
-
-
-
-
-
+            backgroundColor: theme.palette.button.hovered,
+      },
+      ":active": 
+      {
+            backgroundColor: theme.palette.button.pressed,
+      }
 }));
 
 
