@@ -1,14 +1,15 @@
 class Question 
 {
     // Points + Text* + Correct Answer + TECHNICAL STUFF...
-    constructor (price,content,answer)
+    constructor (price,row,col)
     {
         this.price=price;
-        this.content=content;
-        this.answer=answer;
+        this.isAnswered=false;
+        
+        this.col=col;    // X
+        this.row=row;    // Y
 
         // TECHNICAL 
-        this.isAnswered=false;
         // this.answeredByUser="Nickname";
     }
 }

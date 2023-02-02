@@ -12,8 +12,9 @@ import App from "./App";
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+// Timer doesn't work in strict mode :(
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+
+    <App/>
+
 );
