@@ -217,10 +217,13 @@
     'H H H'
     'A A A'
     '. C .';
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1.5fr 1fr 1fr;
     justify-content: stretch;
     align-items: center;
     gap: 8px 4px;
+    padding: 0 8px;
+    background-color: var(--secondary-color-basic);
+    border-radius: 10px;
 
 }
 .Question-block > *
@@ -247,6 +250,10 @@
     justify-content: stretch;
     align-items: center;
     gap: 8px 4px;
+    padding: 8px 0;
+
+    border-top: 4px solid darkmagenta;
+    border-bottom: 4px solid darkmagenta;
 }
 
 
