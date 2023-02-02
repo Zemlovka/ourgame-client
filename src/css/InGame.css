@@ -210,7 +210,7 @@
     grid-template-areas:
     'T T T'
     'T T T'
-    '. . .'
+    'H H H'
     'A A A'
     '. C .';
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
@@ -231,6 +231,11 @@
 {
     font-size: 2rem;
     grid-area: A;
+}
+.Question-block-host-control
+{
+    grid-area: H;
+    gap: 12px
 }
 .Question-block-text
 {
