@@ -5,7 +5,7 @@ function Timer(props)
 {
     let [timeSeconds,setTimeSeconds]=useState(13);   // Initial time
     let timeInterval = useRef(null); 
-    let [timeRunOut,setTimeRunOut] = useState(false);
+    //let [timeRunOut,setTimeRunOut] = useState(false);
 
     useEffect(
         () => 
