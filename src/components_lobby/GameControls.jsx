@@ -23,12 +23,25 @@ function GameControls(props)
 
                 { props.gameState=="ANSWER" && // Ожидание ответов...
                     <React.Fragment>
+                        {/*
                         <div style={{textAlign: "center", width: "100%", gridArea: "A", height: "2rem"}}>
                             WAITING FOR
                         </div>
                         <div style={{textAlign: "center", width: "100%", gridArea: "B", height: "2rem"}}>
                             ANSWERS
                         </div>
+
+                        <i className="fa-solid fa-eye"></i>
+                        <i className="fa-solid fa-person-walking-arrow-loop-left"></i>
+                        */}
+
+                        <CustomButton onClick={()=>{props.callbackOnShowAnswer()}}>
+                            Open Answer
+                        </CustomButton>
+                        <CustomButton onClick={()=>{props.callbackOnReturnToTable()}}>
+                            Return To Lobby
+                        </CustomButton>
+
                     </React.Fragment>
                 }
 

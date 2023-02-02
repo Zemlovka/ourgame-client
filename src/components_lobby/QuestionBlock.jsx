@@ -16,18 +16,24 @@ function QuestionBlock(props)
             <div className="Question-block-answer" style={{display: props.answerVisibility? "flex" : "none" }}>
                 {props.question.current["answer"]}
             </div>
-            <div className="Question-block-host-control">
+            <div className="Question-block-host-controls">
+                <div className="Answering-label">
+                    NOW ANSWERING:
+                </div>
+                <div className="Answering-player">
+                    User #42
+                </div>
+                <div className="Answering-label">
+                    CORRECT ANSWER:
+                </div>
+                <div className="Answering-label">
+                    Simple
+                </div>
                 <CustomButton>
                     Points +
                 </CustomButton>
                 <CustomButton>
                     Points -
-                </CustomButton>
-                <CustomButton onClick={()=>{props.callbackOnShowAnswer()}}>
-                    Show Answer
-                </CustomButton>
-                <CustomButton onClick={()=>{props.callbackOnReturnToTable()}}>
-                    <i className="fa-solid fa-person-walking-arrow-loop-left"></i>
                 </CustomButton>
             </div>
             <div className="Question-block-timer">

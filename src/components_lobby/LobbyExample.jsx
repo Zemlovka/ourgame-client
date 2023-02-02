@@ -139,8 +139,6 @@ function LobbyExample()
                     <QuestionBlock
                         question={selectedQuestion}
                         answerVisibility={answerVisibility}
-                        callbackOnShowAnswer={()=>{onShowAnswer();}}
-                        callbackOnReturnToTable={()=>{onReturnToTable();}}
                     />
                 }
 
@@ -152,8 +150,11 @@ function LobbyExample()
                 <GameControls
                     userMode={userMode}
                     gameState={gameState}
+                    
                     callbackOnAnswerSubmit={()=>{onAnswerSubmit();}}
                     callbackOnRoundNext={()=>{onRoundNext();}}
+                    callbackOnShowAnswer={()=>{onShowAnswer();}}
+                    callbackOnReturnToTable={()=>{onReturnToTable();}}
                 />
             </div>
         </div>
