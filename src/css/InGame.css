@@ -17,6 +17,10 @@
     box-shadow: 0px -1px 39px var(--shadow-alpha-50);
     background-color: var(--secondary-color-light);
 }
+.Ingame-box i
+{
+    margin: 0 4px;
+}
 
 .Question-grid
 {
@@ -232,11 +236,31 @@
     font-size: 2rem;
     grid-area: A;
 }
-.Question-block-host-control
+.Question-block-host-controls
 {
     grid-area: H;
-    gap: 12px
+    display: grid;
+    grid-template-areas:
+    'LABEL_NAME LABEL_NAME  LABEL_ANSWER LABEL_ANSWER  PLUS'
+    'NAME       NAME        ANSWER       ANSWER        MINUS';
+    padding: 0 8px;
+    justify-content: stretch;
+    align-items: center;
+    gap: 8px 4px;
 }
+
+
+
+.Question-block-host-controls> div:nth-child(1) {grid-area: LABEL_NAME;}
+.Question-block-host-controls> div:nth-child(2) {grid-area: NAME;}
+.Question-block-host-controls> div:nth-child(3) {grid-area: LABEL_ANSWER;}
+.Question-block-host-controls> div:nth-child(4) {grid-area: ANSWER;}
+.Question-block-host-controls> button:nth-child(5) {grid-area: PLUS;}
+.Question-block-host-controls> button:nth-child(6) {grid-area: MINUS;}
+
+
+
+
 .Question-block-text
 {
     font-size: 1.5rem;
