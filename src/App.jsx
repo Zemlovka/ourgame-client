@@ -58,8 +58,10 @@ const App = () => {
           <Route path="/lobby/:id" element={<Lobby/>}/>
           <Route path="/search" element={<SearchMenu />} />
 
-          {/* Example without Sockets */}
-          <Route path="/test" element={<LobbyExample />} />
+          {/* Examples without Sockets */}
+          <Route path="/example" element={<LobbyExample  gameState="WELCOME" userMode="PLAYER"/>} />
+          <Route path="/example_player" element={<LobbyExample gameState="SELECT" userMode="PLAYER" />} />
+          <Route path="/example_host" element={<LobbyExample gameState="SELECT" userMode="HOST" />} />
 
         </Routes>
       </BrowserRouter>

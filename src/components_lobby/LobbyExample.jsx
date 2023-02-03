@@ -27,7 +27,7 @@ function useForceUpdate()
 }
 
 
-function LobbyExample()
+function LobbyExample(props)
 {
     // FORCE UPDATE
     let forceUpdate = useForceUpdate() ;
@@ -35,9 +35,9 @@ function LobbyExample()
     let navigate = useNavigate(); 
 
     // STATES
-    let [userMode,  setUserMode]        = useState("PLAYER");     // HOST or PLAYER
+    let [userMode,  setUserMode]        = useState(props.userMode);     // HOST or PLAYER
     let [canSelect, setCanSelect]       = useState(true);         // false on connect
-    let [gameState, setGameState]       = useState("SELECT");     // SELECT or ANSWER or WELCOME
+    let [gameState, setGameState]       = useState(props.gameState);     // SELECT or ANSWER or WELCOME
     let [answerState,setAnswerState]    = useState(false);          // false -> not given, true -> answer has been already pressed!
     let [answerVisibility, setAnswerVisibility ] = useState(false); // true -> answer is visible
 
@@ -166,6 +166,7 @@ function LobbyExample()
                 }
                 { gameState=="ANSWER" && 
                     <QuestionBlock
+                        userMode={userMode}
                         question={selectedQuestion}
                         answerVisibility={answerVisibility}
                         callbackOnChangeScore={(player,value)=>{onChangeScore(player,value)}}
