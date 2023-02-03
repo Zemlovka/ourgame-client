@@ -35,9 +35,9 @@ function LobbyExample()
     let navigate = useNavigate(); 
 
     // STATES
-    let [userMode,  setUserMode]        = useState("HOST");     // HOST or PLAYER
+    let [userMode,  setUserMode]        = useState("PLAYER");     // HOST or PLAYER
     let [canSelect, setCanSelect]       = useState(true);         // false on connect
-    let [gameState, setGameState]       = useState("WELCOME");     // SELECT or ANSWER or WELCOME
+    let [gameState, setGameState]       = useState("SELECT");     // SELECT or ANSWER or WELCOME
     let [answerState,setAnswerState]    = useState(false);          // false -> not given, true -> answer has been already pressed!
     let [answerVisibility, setAnswerVisibility ] = useState(false); // true -> answer is visible
 
@@ -51,7 +51,7 @@ function LobbyExample()
     let selectedQuestion = useRef({answer: "Simple", text: "Opposite of Complex?"})
 
     // CHAT
-    let chatMessages = useRef([]);
+    let chatMessages = useRef([new ChatMessage("System","System","TODO: Implement Chat"),new ChatMessage("System","System","Message Example")]);
 
     // LOBBY MEMBERS
     let host= useRef({username:"Host #01", score: 9999});
