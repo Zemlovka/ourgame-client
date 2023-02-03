@@ -46,6 +46,11 @@ function Main() {
                         <CustomButton isUppercase={true}  onClick={()=>{transition("/about")}} variant="contained">
                             About
                         </CustomButton>
+
+                        <CustomButton isUppercase={true}  onClick={()=>{transition("/settings")}} variant="contained">
+                            Settings
+                        </CustomButton>
+
                         {/* 
                         <Button component={Link} to="/settings" variant="contained" color="primary">
                             Settings
