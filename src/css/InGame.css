@@ -1,27 +1,64 @@
 .Ingame-box
 {
-    padding: 2rem;
+    padding: 1rem 2rem 3rem 2rem;
 
     width: 100%;
     height: 100%;
 
     display: grid;
     grid-template-columns: 75% 25%;
-    grid-template-rows: 75% 25%;
+    grid-template-rows: 10% 70% 20%;
     justify-content: center;
     align-items: stretch;
-    gap: 12px 8px;
+    grid-gap: 12px 8px;
 
     border-radius: 20px;
     backdrop-filter: blur(10px); 
     box-shadow: 0px -1px 39px var(--shadow-alpha-50);
     background-color: var(--secondary-color-light);
 }
-.Ingame-box i
+
+/* HEADER */
+.Header-right, .Header-left
 {
-    margin: 0 4px;
+    height: 100%;
+    width: 100%;
+    align-self: flex-start;
+    justify-self: flex-start;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 16px;
 }
 
+.Info-state,.Info-name
+{
+    display: flex;
+
+    height: 100%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    padding: 0 1rem;
+    border-radius: 10px;
+    background-color: var(--secondary-color-basic);
+
+}
+.Info-state
+{
+    width: 60%;
+    justify-content: flex-start;
+}
+.Info-name
+{
+    width: 100%;
+}
+
+/* GRID */
 .Question-grid
 {
    
@@ -54,54 +91,27 @@
     text-align: center;
 }
 
-
-
-
-
+/* CHAT+USERS */
 .Chat-box, .Info-box
 {
     background-color: var(--secondary-color-basic); 
 }
 
-.Controls-box.Host
+/* CONTROLS */
+.Controls-box.Host, .Controls-box.Player
 {
-    display: grid;
-    grid-template-areas:
-    'A A'
-    'B B'
-    'C D';
+    display: flex;
+    flex-direction: column;
     justify-content: stretch;
     align-items: center;
-    gap: 4px;
-
+    gap: 8px;
 }
-
-
-.Controls-box.Player
-{
-    display: grid;
-    grid-template-areas:
-    'A A'
-    'B C';
-    justify-content: stretch;
-    align-items: center;
-    gap: 8px 4px;
-
-}
-.Controls-box> button:nth-child(1) {grid-area: A;}
-.Controls-box> button:nth-child(2) {grid-area: B;}
-.Controls-box> button:nth-child(3) {grid-area: C;}
-.Controls-box> button:nth-child(4) {grid-area: D;}
-
-
-
-
-
-
 
 .Controls-box > button
 {
-    font-size: smaller;
+    font-size:larger;
+
+    height: 100%;
 }
 
 .Info-box
@@ -286,4 +296,29 @@
 .Chat-box, .Info-box, .Controls-box
 {
     border: 0px dashed seagreen;
+}
+
+
+
+/* WELCOME */
+
+.Welcome
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+
+    background-color: var(--secondary-color-basic);
+    border-radius: 10px;
+}
+.Welcome-label:nth-child(1)
+{
+    font-size: 4rem;
+}
+.Welcome-label:nth-child(2)
+{
+    font-size: 1.5rem;
 }

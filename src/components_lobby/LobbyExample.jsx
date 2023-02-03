@@ -14,6 +14,8 @@ import GameChat from "./GameChat";
 import GameControls from "./GameControls";
 import GameInfo from "./GameInfo";
 import GameMessage from "./GameMessage";
+import CustomCircleButton from "../components_mui_based/CustomCircleButton";
+import {useNavigate} from "react-router-dom";
 
 
 
@@ -29,11 +31,13 @@ function LobbyExample()
 {
     // FORCE UPDATE
     let forceUpdate = useForceUpdate() ;
+    // NAVIGATION
+    let navigate = useNavigate(); 
 
     // STATES
     let [userMode,  setUserMode]        = useState("HOST");     // HOST or PLAYER
     let [canSelect, setCanSelect]       = useState(true);         // false on connect
-    let [gameState, setGameState]       = useState("SELECT");     // SELECT or ANSWER
+    let [gameState, setGameState]       = useState("WELCOME");     // SELECT or ANSWER or WELCOME
     let [answerState,setAnswerState]    = useState(false);          // false -> not given, true -> answer has been already pressed!
     let [answerVisibility, setAnswerVisibility ] = useState(false); // true -> answer is visible
 
@@ -133,6 +137,26 @@ function LobbyExample()
     return(
         <div className="Wrapper-game">
             <div className="Ingame-box">
+
+                <div className="Header-left">
+                    <CustomCircleButton fontSize="1.5rem" diameter="42px" onClick={returnToMainMenu}>
+                        <i className="fa-sharp fa-solid fa-angle-left"></i>
+                    </CustomCircleButton>
+                    <div className="Info-state">
+                        Waiting for players...
+                    </div>
+                </div>
+
+                <div className="Header-right">
+                    <div className="Info-name">
+                        Lobby's Name
+                    </div>
+                    <CustomCircleButton fontSize="1.5rem" diameter="42px" onClick={() => { }}>
+                        <i className="fa-solid fa-pause"></i>
+                    </CustomCircleButton>
+                </div>
+
+
                 { gameState=="SELECT" && 
                     <QuestionGrid
                         gridOfQuestions={gridOfQuestions}
@@ -146,6 +170,16 @@ function LobbyExample()
                         answerVisibility={answerVisibility}
                         callbackOnChangeScore={(player,value)=>{onChangeScore(player,value)}}
                     />
+                }
+                { gameState=="WELCOME" && 
+                    <div className="Welcome">
+                        <div className="Welcome-label">
+                            Hello!
+                        </div>
+                        <div className="Welcome-label">
+                            Please press READY button and wait until ohter players will do the same...
+                        </div>
+                    </div>
                 }
 
                 <GameChat chatData={chatMessages}/>
@@ -161,10 +195,16 @@ function LobbyExample()
                     callbackOnRoundNext={()=>{onRoundNext();}}
                     callbackOnShowAnswer={()=>{onShowAnswer();}}
                     callbackOnReturnToTable={()=>{onReturnToTable();}}
+                    callbackOnPlayerReady={()=>{}}
                 />
             </div>
         </div>
     );
+
+    function returnToMainMenu() {
+        console.log("RETURN PRESSED!");
+        navigate("/");
+      }
 }
 
 

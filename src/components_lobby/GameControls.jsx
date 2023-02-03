@@ -6,71 +6,66 @@ import CustomButton from '../components_mui_based/CustomButton';
 
 function GameControls(props)
 {
-    if(props.userMode=="HOST")
-    {
+    
         return(
-            <div className="Controls-box Host">
-                { props.gameState=="SELECT" &&
-                    <React.Fragment>
-                        <CustomButton>
-                            CHANGE SCORE
-                        </CustomButton>
-                        <CustomButton onClick={()=>{props.callbackOnRoundNext();}}>
-                            NEXT ROUND
-                        </CustomButton>
-                    </React.Fragment>
-                }
-
-                { props.gameState=="ANSWER" && // Ожидание ответов...
-                    <React.Fragment>
-                        {/*
-                        <div style={{textAlign: "center", width: "100%", gridArea: "A", height: "2rem"}}>
-                            WAITING FOR
-                        </div>
-                        <div style={{textAlign: "center", width: "100%", gridArea: "B", height: "2rem"}}>
-                            ANSWERS
-                        </div>
-
-                        <i className="fa-solid fa-eye"></i>
-                        <i className="fa-solid fa-person-walking-arrow-loop-left"></i>
-                        */}
-
+            <React.Fragment>
+                { 
+                    ((props.gameState=="SELECT" && props.userMode=="HOST") &&
+                        <div className="Controls-box Host">
+                            <CustomButton>
+                                Change Score
+                            </CustomButton>
+                            <CustomButton onClick={()=>{props.callbackOnRoundNext();}}>
+                                Next Round
+                            </CustomButton>
+                        </div>)
+                }   
+                {
+                    ((props.gameState == "ANSWER" && props.userMode == "HOST") &&
+                    <div className="Controls-box Host">
                         <CustomButton onClick={()=>{props.callbackOnShowAnswer()}}>
                             Open Answer
                         </CustomButton>
                         <CustomButton onClick={()=>{props.callbackOnReturnToTable()}}>
-                            Return To Lobby
+                            Return To Table
                         </CustomButton>
-
-                    </React.Fragment>
+                    </div>)
+                }
+                {
+                    ((props.gameState == "WELCOME" && props.userMode == "HOST") &&
+                    <div className="Controls-box Host">
+                        <CustomButton   onClick={()=>{props.callbackOnPlayerReady()}}>
+                            Ready
+                        </CustomButton> 
+                    </div>)
                 }
 
-                <CustomButton><i className="fa-solid fa-pause"></i></CustomButton>
-                <CustomButton><i className="fa-solid fa-right-from-bracket"></i></CustomButton>
-            </div>   
-        )
-    }
-    else
-    {
-        return(
-            <div className="Controls-box Player">
-                { props.gameState=="ANSWER" && 
-                    <CustomButton   onClick={()=>{props.callbackOnAnswerSubmit()}}>
-                        ANSWER
-                    </CustomButton> 
+                {
+                    ((props.gameState == "SELECT" && props.userMode == "PLAYER") &&
+                    <div className="Controls-box Player">
+                        <div style={{textAlign: "center", width: "100%", gridArea: "A", height: "2rem"}}>
+                            Waiting...
+                        </div> 
+                    </div>)
                 }
-                { props.gameState=="SELECT" && // Ожидание выбора...
-                    <div style={{textAlign: "center", width: "100%", gridArea: "A", height: "2rem"}}>
-                        WAITING...
-                    </div> 
+                {
+                    ((props.gameState == "ANSWER" && props.userMode == "PLAYER") &&
+                    <div className="Controls-box Player">
+                        <CustomButton   onClick={()=>{props.callbackOnAnswerSubmit()}}>
+                            Answer
+                        </CustomButton> 
+                    </div>)
                 }
-                <CustomButton><i className="fa-solid fa-pause"></i></CustomButton>
-                <CustomButton><i className="fa-solid fa-right-from-bracket"></i></CustomButton>
-            </div>   
-        )
-    }
+                {
+                    ((props.gameState == "WELCOME" && props.userMode == "PLAYER") &&
+                    <div className="Controls-box Player">
+                        <CustomButton   onClick={()=>{props.callbackOnPlayerReady()}}>
+                            Ready
+                        </CustomButton> 
+                    </div>)
+                }
 
-
+            </React.Fragment>)
 
 }
 export default GameControls;

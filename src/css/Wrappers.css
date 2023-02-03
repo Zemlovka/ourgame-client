@@ -34,8 +34,8 @@
 
 .Wrapper-game
 {
-    width: min(80%,800px);
-    height: min(80%, 600px);
+    width: min(85%,1200px);
+    height: min(85%, 600px);
 
     display: flex;
     justify-content: center;
