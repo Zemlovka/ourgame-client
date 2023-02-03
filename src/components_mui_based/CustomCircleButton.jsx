@@ -28,7 +28,8 @@ const CustomCircleButton = styled((Button))(
                   color: theme.palette.text.main,
                   ":hover": 
                   {
-                        backgroundColor: theme.palette.button.hovered,
+                        backgroundColor:props.hoverColor? props.hoverColor : theme.palette.button.hovered,
+                        color:props.hoverColor? theme.palette.button.hovered : "white",
                   },
                   ":active": 
                   {

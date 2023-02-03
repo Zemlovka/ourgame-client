@@ -75,7 +75,7 @@ function LobbyListItem(lobby) {
             <div className="Title">{lobby.name}</div>
             <div className="Player-count">{lobby.playersCount}/{lobby.maxPlayers} 🙂</div>
             <div className="With-password">{lobby.private ? "🔒" : "🔓"}</div>
-            <CustomCircleButton isTransparent={false} onClick={handleOpen}>
+            <CustomCircleButton hoverColor="white" isTransparent={false} onClick={handleOpen}>
                 <i className="fa-sharp fa-solid fa-angle-right"></i>
             </CustomCircleButton>
             
