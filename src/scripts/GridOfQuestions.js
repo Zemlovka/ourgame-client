@@ -37,7 +37,7 @@ class GridOfQuestions
             }
         }
         this.maxRowLength=max;
-        console.log(">>>", this.themes)
+        //console.log(">>>", this.themes)
 
         // Class Functions
         this.getQuestion = function(row,col)
