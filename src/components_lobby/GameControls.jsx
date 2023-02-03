@@ -34,7 +34,7 @@ function GameControls(props)
                 {
                     ((props.gameState == "WELCOME" && props.userMode == "HOST") &&
                     <div className="Controls-box Host">
-                        <CustomButton   onClick={()=>{props.callbackOnPlayerReady()}}>
+                        <CustomButton   onClick={()=>{props.callbackOnReadyPressed()}}>
                             Ready
                         </CustomButton> 
                     </div>)
@@ -59,7 +59,7 @@ function GameControls(props)
                 {
                     ((props.gameState == "WELCOME" && props.userMode == "PLAYER") &&
                     <div className="Controls-box Player">
-                        <CustomButton   onClick={()=>{props.callbackOnPlayerReady()}}>
+                        <CustomButton   onClick={()=>{props.callbackOnReadyPressed()}}>
                             Ready
                         </CustomButton> 
                     </div>)

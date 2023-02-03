@@ -16,7 +16,7 @@ function QuestionBlock(props)
             <div className="Question-block-answer" style={{display: props.answerVisibility? "flex" : "none" }}>
                 {props.question.current["answer"]}
             </div>
-            { true && 
+            { props.userMode=="HOST" && 
                 <div className="Question-block-host-controls">
                     <div className="Answering-label">
                         NOW ANSWERING:
