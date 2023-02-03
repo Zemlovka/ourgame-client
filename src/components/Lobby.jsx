@@ -47,16 +47,33 @@ function Lobby() {
     const socket = useRef(null);
 
 
+
+
+
+
+
     /* socket */
 
     //socket.current = io(`http://25.74.83.186${wsUrl}`);
     const [isConnected, setIsConnected] = useState(socket.connected);
 
-    const [lobby, setLobby] = useState({});
+    //const [lobby, setLobby] = useState({});
+    let lobbyData = useRef(null);
 
     useEffect(() => {
 
-        socket.current = io(`http://25.74.83.186${wsUrl}`);
+        socket.current = io(`http://25.74.83.186${wsUrl}`,
+         {
+            transports: ["polling","websocket"], // use WebSocket first, if available\\
+            extraHeaders: {
+                "username": "user"
+              }
+
+          });
+        
+        // !!!
+        //socket.current = io(`http://146.102.116.23${wsUrl}`);
+
 
         // ON ANY EVENT RECIEVED
         socket.current.onAny((eventName, ...args) => {
@@ -64,17 +81,21 @@ function Lobby() {
             
         });
 
-        // ON ANY EVENT RECIEVED ALTERNATIVE
+        // ON ANY EVENT RECIEVED ALTERNATIVE ?
+        /*
         socket.current.on("*",(eventName, args) => {
             console.log("Recieved*",eventName,"with args",args);
                     
         });
+        */
 
-        // ON ANY EVENT EMITTED
+        // ON ANY EVENT EMITTED ?
+        /*
         socket.current.prependAny((eventName, ...args) => {
             console.log("Emitted",eventName,"with args",args);
             
         });
+        */
 
         // SOCKET TEST
         socket.current.on('test', () => {
@@ -83,19 +104,29 @@ function Lobby() {
 
 
 
-        socket.current.on('connect', () => {
+        socket.current.on('connect', (...args) => {
             setIsConnected(true);
-            console.log("socket connected");
+            console.log("socket connected",args);
         });
 
-
+        socket.current.on("map", (map)=>
+        {
+            console.log("map recieved",map);
+            dataAsJSON.current=map;
+            console.log("current data",dataAsJSON.current);
+            gridOfQuestions.current = new GridOfQuestions(dataAsJSON.current["rounds"][gameRound.current].themes);
+            forceUpdate();
+        }
+        )
         socket.current.on('disconnect', () => {
             setIsConnected(false);
             console.log('socket disconnected');
         });
         socket.current.on('lobby', (lobby) => {
-            setLobby(lobby);
+            //setLobby(lobby);
+            lobbyData.current=lobby
             console.log("LOBBY >",lobby);
+            updateLobbyData()
         });
 
 
@@ -120,7 +151,7 @@ function Lobby() {
         };
     }, []);
 
- 
+    
 
     /*
     const sendPing = () => {
@@ -133,7 +164,34 @@ function Lobby() {
     }
     */
     /* socket */
+    function updateLobbyData()
+    {
+        if(lobbyData.current!=null)
+        {  
+            host.current= {username:lobbyData.current.host.username, score: -1}
+            let temp=[];
+            let count=0;
+            for (let player of lobbyData.current.players)
+            {
+                temp.push({username: player.username, score: 0})
+                if(player.ready)
+                {
+                    count++;
+                }
+            }
+            players.current=[...temp];
 
+            console.log("Is all ready?");
+            if(lobbyData.current.host.ready && count==2)
+            {
+                console.log("Game Started!");
+                setGameState("SELECT");
+            }
+         
+
+        }
+        forceUpdate();
+    }
   
 
     // FORCE UPDATE
@@ -153,25 +211,18 @@ function Lobby() {
     let answerQueue = useRef({player: "Nickname 1"},{player: "Nickname 2"},)
 
     // QUESTIONS
-    let dataAsJSON = require("./../GameMap.json");  // JSON FILE GOES HERE
+    
+    let dataAsJSON = useRef(null); //require("./../GameMap.json");  // JSON FILE GOES HERE
     let gameRound = useRef(0);
-    let gridOfQuestions = useRef(new GridOfQuestions(dataAsJSON["rounds"][gameRound.current].themes));
+    let gridOfQuestions = useRef(null);
     let selectedQuestion = useRef({answer: "Simple", text: "Opposite of Complex?"})
 
     // CHAT
     let chatMessages = useRef([new ChatMessage("System","System","TODO: Implement Chat"),new ChatMessage("System","System","Message Example")]);
 
     // LOBBY MEMBERS
-    let host= useRef({username:"Host #00", score: -1});
-    let players = useRef(
-        [   {username:"User #01", score: 123},
-            {username:"User #02", score: 234},
-            {username:"User #03", score: 555},
-            {username:"User #04", score: 222},
-            {username:"User #05", score: 333},
-            {username:"User #06", score: 444},
-            
-        ]);
+    let host= useRef( {username:"Host #00", score: -1}); // {username:"Host #00", score: -1}
+    let players = useRef([]);
 
     // EVENTS
     function onUserConnect()
@@ -204,13 +255,15 @@ function Lobby() {
     function onReadyPressed()
     {
         console.log("READY PRESSED!");
+        //console.log("?",wsUrl);
+        console.log("LOBBY DATA >",lobbyData.current);
         console.log("Changed from",userState,"to",!userState);
         setUserState(prevState => {return !prevState})
         //console.log("SOCKET",socket.current);
         //socket.current.emit("ready", JSON.stringify([userState]));
         //socket.current.emit("ready", JSON.stringify(null));
         //socket.current.emit("ready", JSON.stringify([{"ready":userState}]));
-       socket.current.emit('ready', 1);
+        socket.current.emit('ready', {"ready": true});
     }
 
 
@@ -247,7 +300,8 @@ function Lobby() {
     {
         console.log("NEXT BUTTON PRESSED!");
         gameRound.current+=1;
-        gridOfQuestions.current=new GridOfQuestions(dataAsJSON["rounds"][gameRound.current].themes);
+        gridOfQuestions.current=new GridOfQuestions(dataAsJSON.current["rounds"][gameRound.current].themes);
+        
         forceUpdate();
 
         // socket.emit("round_next");        
@@ -262,13 +316,13 @@ function Lobby() {
                         <i className="fa-sharp fa-solid fa-angle-left"></i>
                     </CustomCircleButton>
                     <div className="Info-state">
-                        Waiting for players...
+                        { gameState=="WELCOME"? "Waiting for players..." : "Game in progress"}
                     </div>
                 </div>
 
                 <div className="Header-right">
                     <div className="Info-name">
-                        Lobby's Name
+                        {lobbyData.current!= null ? lobbyData.current.name : ""}
                     </div>
                     <CustomCircleButton fontSize="1.5rem" diameter="42px" onClick={() => { }}>
                         <i className="fa-solid fa-pause"></i>

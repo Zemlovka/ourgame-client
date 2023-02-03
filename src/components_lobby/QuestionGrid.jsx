@@ -20,8 +20,13 @@ function QuestionGrid(props)
 
     return(
         <div className="Question-grid" style={
-            { gridTemplateColumns: generateTemplateColumns(props.gridOfQuestions.current.maxRowLength)}}>
-            {
+            {   
+                gridTemplateColumns:
+                props.gridOfQuestions.current!=null ? 
+                    generateTemplateColumns(props.gridOfQuestions.current.maxRowLength) : "",
+            }}>
+            {   
+             ( props.gridOfQuestions.current!=null &&
                  props.gridOfQuestions.current.themes.map(category =>
                     {
                         return(
@@ -46,7 +51,7 @@ function QuestionGrid(props)
                                 }
                             </React.Fragment>
                         )
-                    })
+                    }))
             }
         </div>
     );
