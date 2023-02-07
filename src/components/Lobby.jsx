@@ -51,7 +51,7 @@ function Lobby() {
 
 
 
-
+    let username = localStorage.getItem("username");
     /* socket */
 
     //socket.current = io(`http://25.74.83.186${wsUrl}`);
@@ -66,7 +66,7 @@ function Lobby() {
          {
             transports: ["polling","websocket"], // use WebSocket first, if available\\
             extraHeaders: {
-                "username": "user"
+                "username": username,
               }
 
           });
@@ -115,6 +115,7 @@ function Lobby() {
             dataAsJSON.current=map;
             console.log("current data",dataAsJSON.current);
             gridOfQuestions.current = new GridOfQuestions(dataAsJSON.current["rounds"][gameRound.current].themes);
+            setGameState("SELECT");
             forceUpdate();
         }
         )
@@ -130,10 +131,7 @@ function Lobby() {
         });
 
 
-        socket.current.on("ready",(ready) => {
-            console.log("Ready Recieved");
-            console.log("READY >",ready);
-        });
+        ;
 
 
         
@@ -182,12 +180,13 @@ function Lobby() {
             players.current=[...temp];
 
             console.log("Is all ready?");
+            /*
             if(lobbyData.current.host.ready && count==2)
             {
                 console.log("Game Started!");
                 setGameState("SELECT");
             }
-         
+          */
 
         }
         forceUpdate();
@@ -200,7 +199,7 @@ function Lobby() {
     let navigate = useNavigate(); 
 
     // STATES
-    let [userMode,  setUserMode]        = useState("PLAYER");     // HOST or PLAYER
+    let [userMode,  setUserMode]        = useState("HOST");     // HOST or PLAYER
     let [canSelect, setCanSelect]       = useState(true);         // false on connect
     let [gameState, setGameState]       = useState("WELCOME");     // SELECT or ANSWER or WELCOME
     let [answerState,setAnswerState]    = useState(false);          // false -> not given, true -> answer has been already pressed!

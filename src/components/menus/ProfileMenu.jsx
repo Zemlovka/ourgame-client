@@ -18,13 +18,6 @@ function ProfileMenu()
         localStorage.removeItem('avatar');
         navigate("/auth");
     }
-    /*
-    avatar:https://lh3.googleusercontent.com/aPeSCag8eHV8Xfsu2FdRzRrV0KzD3CWkO8jGbvGZSFIvA_5-8BJ6cHh0lkvqXeUYFwDRp03pH3HdqMNv9--Pv_jw0z1USaKyjg=s400
-    username: user1
-    token:eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoidXNlcjEiLCJleHAiOjE2NzQyMDg1NzksImlhdCI6MTY3NDEyMjE3OSwic2NvcGUiOiJST0xFX1VTRVIifQ.r88PnRGU_Hv31Qi3lu-T8cJQr6Y9E_PxkiJzeqbejDj8tLbNCTIlNn35aUCzA7LnhVHzRacqzSS4pAgGvx_VomKGCrRhxrdEqKpOE4dV5yG7e2Rc89YbVQigEY1Sggh4Mi_koGrV6dTs1dIPJY3w4mD5nNDJvbB6bMSb2JUefr85oL-pNflu1X0Kd3M682RRpuT7M4VWWqFSvIP15wcr-njm57YXZuTZ1sYCwpSGzy-MmaOEoOvMPpQtPqKzE7Sy2qNgF2V7WafY-yxzgzJmcRBdJHH-oTVKo9v3mN6Ip4B-9H9UKBoYzO8nGq2iFfxAt8FrNfSE7r5iAb0XO-I3QA
-    */
-
-
     return(
         <div className="Wrapper-submenu">
             <div className="Submenu-box" id="ProfileMenu">

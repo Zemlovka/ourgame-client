@@ -18,7 +18,7 @@ function Main() {
     }
 
     // [!] TEMP
-    if (!localStorage.getItem("token") && false) {
+    if (!localStorage.getItem("token")) {
         console.log("Not authenticated");
         console.log(localStorage.getItem("token"));
 
